@@ -212,8 +212,9 @@
 
   /* TABLE */
   .ex-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
-  .ex-table th:first-child, .ex-table td:first-child { width: 36%; }
-  .ex-table th:last-child, .ex-table td:last-child { width: 64%; }
+  .ex-table th:nth-child(1), .ex-table td:nth-child(1) { width: 32%; }
+  .ex-table th:nth-child(2), .ex-table td:nth-child(2) { width: 18%; }
+  .ex-table th:nth-child(3), .ex-table td:nth-child(3) { width: 50%; }
   .ex-table th {
     background: var(--surface2);
     color: var(--ink-muted);
@@ -240,8 +241,7 @@
 
   .ex-name { font-weight: 600; color: var(--ink); font-size: 13px; }
   .ex-note { font-size: 11.5px; color: var(--ink-muted); margin-top: 3px; line-height: 1.5; }
-  /* hide tipo column */
-  .ex-table .col-tipo, .ex-table th.h-tipo, .ex-table td.td-tipo { display: none; }
+
 
   .sr {
     font-family: var(--mono);
@@ -434,35 +434,30 @@
     <tbody>
       <tr>
         <td>L</td>
-        <td class="td-tipo"><span class="badge badge-pull">PULL A</span></td>
         <td>Espalda grosor + Bíceps suave</td>
         <td>10–12 series espalda · 4 series bíceps</td>
         <td>Remos — grosor dorsal y trapecio medio</td>
       </tr>
       <tr>
         <td>M</td>
-        <td class="td-tipo"><span class="badge badge-push">PUSH A</span></td>
         <td>Pecho volumen + Tríceps</td>
         <td>10 series pecho · 6 series tríceps</td>
         <td>Press con mancuernas — volumen pectoral</td>
       </tr>
       <tr>
         <td>X</td>
-        <td class="td-tipo"><span class="badge badge-legs">LEGS</span></td>
         <td>Piernas completo + Core</td>
         <td>12 series piernas · 6 series core</td>
         <td>Cuádriceps + isquios + gemelos</td>
       </tr>
       <tr>
         <td>J</td>
-        <td class="td-tipo"><span class="badge badge-push">PUSH B</span></td>
         <td>Hombros prioritario + Pecho apoyo + Tríceps</td>
         <td>10 series hombro · 6 series pecho · 4 tríceps</td>
         <td>Deltoides lateral y posterior</td>
       </tr>
       <tr>
         <td>V</td>
-        <td class="td-tipo"><span class="badge badge-pull">PULL B</span></td>
         <td>Espalda anchura + Bíceps suave + Lumbar</td>
         <td>10–12 series espalda · 4 series bíceps</td>
         <td>Jalones — anchura dorsal y redondo mayor</td>
@@ -494,14 +489,13 @@
       </div>
       <div class="day-desc">Calentamiento: 5 min elíptica suave + 2 series de jalón con el 50% de la carga de trabajo para activar el patrón. Empieza siempre con el ejercicio más exigente neurológicamente (remo) cuando estás fresco.</div>
       <table class="ex-table">
-        <thead><tr><th>Ejercicio</th><th class="h-tipo">Tipo</th><th>Series × Reps</th><th>Técnica y Tips</th></tr></thead>
+        <thead><tr><th>Ejercicio</th><th>Series × Reps</th><th>Técnica y Tips</th></tr></thead>
         <tbody>
           <tr>
             <td>
               <div class="ex-name">Remo en Máquina / Polea Baja <span class="badge badge-priority">PRIORITARIO</span></div>
               <div class="ex-note">Ejercicio principal de la sesión. Pirámide ascendente.</div>
             </td>
-            <td class="td-tipo"><span class="badge badge-pull">PULL</span></td>
             <td><span class="sr pull">4 × 12/10/8/6</span></td>
             <td>Tirón a cintura, codos pegados al cuerpo. Pausa 1 seg en contracción máxima — eso es lo que construye grosor. Escápulas retraídas antes de doblar el codo. En la última serie de 6 reps, debe costarte el 5º y 6º. Descanso 2 min entre series.</td>
           </tr>
@@ -510,7 +504,6 @@
               <div class="ex-name">Remo Unilateral con Mancuerna</div>
               <div class="ex-note">Mayor recorrido que el bilateral. Activación unilateral superior.</div>
             </td>
-            <td class="td-tipo"><span class="badge badge-pull">PULL</span></td>
             <td><span class="sr pull">4 × 10 c/lado</span></td>
             <td>Rodilla y mano en banco. Codo al techo, ligera rotación del torso al final para máximo recorrido. No compensar con el hombro. Misma carga ambos lados — si hay asimetría, trabaja el lado débil primero.</td>
           </tr>
@@ -519,7 +512,6 @@
               <div class="ex-name">Remo en Polea con Agarre Neutro (cuerda o triángulo)</div>
               <div class="ex-note">Variante de agarre para ángulo diferente.</div>
             </td>
-            <td class="td-tipo"><span class="badge badge-pull">PULL</span></td>
             <td><span class="sr pull">3 × 12</span></td>
             <td>El agarre neutro activa más el dorsal inferior vs el agarre prono que activa más el trapecio. Útil para completar el trabajo de grosor en diferentes fibras. Tirón a ombligo, no al pecho.</td>
           </tr>
@@ -528,7 +520,6 @@
               <div class="ex-name">Pullover con Mancuerna</div>
               <div class="ex-note">Transición entre grosor y anchura. Serrato + dorsal.</div>
             </td>
-            <td class="td-tipo"><span class="badge badge-pull">PULL</span></td>
             <td><span class="sr pull">3 × 12</span></td>
             <td>Tumbado transversal en banco. Desde atrás de la cabeza hasta vertical. Codos con ligera flexión fija. Inhala al bajar, exhala al subir. Carga moderada — el objetivo es el estiramiento y la conexión, no la carga máxima.</td>
           </tr>
@@ -537,7 +528,6 @@
               <div class="ex-name">Curl Martillo (agarre neutro)</div>
               <div class="ex-note">Bíceps sin estrés en inserción medial del codo.</div>
             </td>
-            <td class="td-tipo"><span class="badge badge-pull">PULL</span></td>
             <td><span class="sr pull">3 × 12</span></td>
             <td>De pie o sentado. Agarre neutro elimina la supinación que provoca dolor en antebrazo. Codos fijos. Bajar 3 seg. Carga conservadora estas dos semanas — el bíceps ya trabaja en todos los remos anteriores.</td>
           </tr>
@@ -546,7 +536,6 @@
               <div class="ex-name">Curl en Polea Baja (unilateral)</div>
               <div class="ex-note">Tensión constante en todo el recorrido — ventaja sobre mancuerna.</div>
             </td>
-            <td class="td-tipo"><span class="badge badge-pull">PULL</span></td>
             <td><span class="sr pull">2 × 15 c/lado</span></td>
             <td>La polea mantiene tensión en el bíceps incluso en posición extendida, a diferencia de la mancuerna. Carga ligera. No forzar supinación si molesta — agarre neutro también aquí.</td>
           </tr>
@@ -563,41 +552,35 @@
       </div>
       <div class="day-desc">Mismos ejercicios. Progresión: añadir 1 serie a los tres primeros ejercicios. Carga +5% en remo máquina y remo unilateral si la semana 1 fue cómoda en las últimas reps.</div>
       <table class="ex-table">
-        <thead><tr><th>Ejercicio</th><th class="h-tipo">Tipo</th><th>S2 — Series × Reps</th><th>Ajuste respecto a S1</th></tr></thead>
+        <thead><tr><th>Ejercicio</th><th>S2 — Series × Reps</th><th>Ajuste respecto a S1</th></tr></thead>
         <tbody>
           <tr>
             <td><div class="ex-name">Remo Máquina / Polea Baja</div></td>
-            <td class="td-tipo"><span class="badge badge-pull">PULL</span></td>
             <td><span class="sr pull">5 × 12/10/8/6/6</span></td>
             <td>Serie extra con la misma carga de la última serie de S1. Si en S1 llegaste cómodo al 6º rep: +5% carga en las 3 últimas series.</td>
           </tr>
           <tr>
             <td><div class="ex-name">Remo Unilateral</div></td>
-            <td class="td-tipo"><span class="badge badge-pull">PULL</span></td>
             <td><span class="sr pull">5 × 10 c/lado</span></td>
             <td>Serie extra. +2 kg por lado si S1 fue controlado. Añadir pausa de 2 seg en contracción máxima esta semana.</td>
           </tr>
           <tr>
             <td><div class="ex-name">Remo Polea Agarre Neutro</div></td>
-            <td class="td-tipo"><span class="badge badge-pull">PULL</span></td>
             <td><span class="sr pull">4 × 12</span></td>
             <td>Serie extra. Carga igual. Reducir descanso a 75 seg para mayor densidad.</td>
           </tr>
           <tr>
             <td><div class="ex-name">Pullover</div></td>
-            <td class="td-tipo"><span class="badge badge-pull">PULL</span></td>
             <td><span class="sr pull">3 × 12</span></td>
             <td>Sin cambio en series. +2 kg si S1 fue muy controlado.</td>
           </tr>
           <tr>
             <td><div class="ex-name">Curl Martillo</div></td>
-            <td class="td-tipo"><span class="badge badge-pull">PULL</span></td>
             <td><span class="sr pull">3 × 12</span></td>
             <td>Sin cambio. Prioridad: sin dolor. Si hay molestia en antebrazo, sustituir por curl en polea con agarre neutro.</td>
           </tr>
           <tr>
             <td><div class="ex-name">Curl Polea Unilateral</div></td>
-            <td class="td-tipo"><span class="badge badge-pull">PULL</span></td>
             <td><span class="sr pull">2 × 15 c/lado</span></td>
             <td>Sin cambio.</td>
           </tr>
@@ -626,13 +609,12 @@
       </div>
       <div class="day-desc">Calienta el hombro anterior antes de empezar: 2 series de rotación externa con banda elástica o cuerda en polea. Previene la molestia que ya has experimentado. Codos a 45° en todos los press — nunca en cruz.</div>
       <table class="ex-table">
-        <thead><tr><th>Ejercicio</th><th class="h-tipo">Tipo</th><th>Series × Reps</th><th>Técnica y Tips</th></tr></thead>
+        <thead><tr><th>Ejercicio</th><th>Series × Reps</th><th>Técnica y Tips</th></tr></thead>
         <tbody>
           <tr>
             <td>
               <div class="ex-name">Press Banco Plano Mancuernas <span class="badge badge-priority">PRINCIPAL</span></div>
             </td>
-            <td class="td-tipo"><span class="badge badge-push">PUSH</span></td>
             <td><span class="sr push">4 × 10/8/8/6</span></td>
             <td>Escápulas retraídas y deprimidas. Codos a 45°. Bajar hasta que el codo esté a la altura del banco — no más. 2 seg bajada, explosivo arriba. Pausa 1 seg en contracción. Pirámide ascendente.</td>
           </tr>
@@ -640,7 +622,6 @@
             <td>
               <div class="ex-name">Press Inclinado Mancuernas (30°)</div>
             </td>
-            <td class="td-tipo"><span class="badge badge-push">PUSH</span></td>
             <td><span class="sr push">3 × 10</span></td>
             <td>30° activa pectoral superior con menos deltoides anterior que 45°. Misma mecánica que plano. Carga inferior al plano. El pectoral superior es el que más define visualmente el pecho en hipertrofia.</td>
           </tr>
@@ -648,7 +629,6 @@
             <td>
               <div class="ex-name">Aperturas en Polea (cruce de poleas o máquina peck deck)</div>
             </td>
-            <td class="td-tipo"><span class="badge badge-push">PUSH</span></td>
             <td><span class="sr push">3 × 14</span></td>
             <td>La polea mantiene tensión en el pectoral en todo el recorrido, a diferencia de la mancuerna que pierde tensión arriba. Movimiento de abrazo. Contracción máxima en el centro. Carga ligera — es aislamiento, no potencia.</td>
           </tr>
@@ -656,7 +636,6 @@
             <td>
               <div class="ex-name">Fondos en Paralelas (lastre si puedes)</div>
             </td>
-            <td class="td-tipo"><span class="badge badge-push">PUSH</span></td>
             <td><span class="sr push">3 × 10</span></td>
             <td>Torso ligeramente inclinado hacia delante para activar más pectoral que tríceps. Bajar hasta 90° de codo. Para añadir dificultad: cinturón con disco. Si el hombro molesta, sustituir por press en máquina convergente.</td>
           </tr>
@@ -664,7 +643,6 @@
             <td>
               <div class="ex-name">Extensión Tríceps en Polea (cuerda)</div>
             </td>
-            <td class="td-tipo"><span class="badge badge-push">PUSH</span></td>
             <td><span class="sr push">3 × 12</span></td>
             <td>Codos fijos a los costados. Separar las manos al final para máxima contracción de cabeza lateral. No dejar que los codos se alejen del cuerpo durante el movimiento.</td>
           </tr>
@@ -672,7 +650,6 @@
             <td>
               <div class="ex-name">Press Francés con Mancuernas (Skullcrusher)</div>
             </td>
-            <td class="td-tipo"><span class="badge badge-push">PUSH</span></td>
             <td><span class="sr push">3 × 10</span></td>
             <td>Tumbado, bajar mancuernas a los lados de la cabeza — no detrás. Codos apuntando al techo, no abiertos. Trabaja cabeza larga del tríceps. Carga moderada.</td>
           </tr>
@@ -689,35 +666,30 @@
       </div>
       <div class="day-desc">Añadir superserie en los dos últimos ejercicios de pecho (aperturas + fondos sin descanso). Incremento de carga en press plano e inclinado.</div>
       <table class="ex-table">
-        <thead><tr><th>Ejercicio</th><th class="h-tipo">Tipo</th><th>S2 — Series × Reps</th><th>Ajuste</th></tr></thead>
+        <thead><tr><th>Ejercicio</th><th>S2 — Series × Reps</th><th>Ajuste</th></tr></thead>
         <tbody>
           <tr>
             <td><div class="ex-name">Press Banco Plano Mancuernas</div></td>
-            <td class="td-tipo"><span class="badge badge-push">PUSH</span></td>
             <td><span class="sr push">5 × 10/8/8/6/6</span></td>
             <td>Serie extra. +2 kg por mancuerna en las 3 últimas series si S1 fue controlado.</td>
           </tr>
           <tr>
             <td><div class="ex-name">Press Inclinado Mancuernas</div></td>
-            <td class="td-tipo"><span class="badge badge-push">PUSH</span></td>
             <td><span class="sr push">4 × 10</span></td>
             <td>Serie extra. +2 kg si S1 cómodo.</td>
           </tr>
           <tr>
             <td><div class="ex-name">Aperturas Polea + Fondos (superserie)</div></td>
-            <td class="td-tipo"><span class="badge badge-push">PUSH</span></td>
             <td><span class="sr push">3 rondas · 12 + 10</span></td>
             <td>Sin descanso entre aperturas y fondos. 90 seg entre rondas. Alta fatiga local del pectoral.</td>
           </tr>
           <tr>
             <td><div class="ex-name">Extensión Tríceps Polea</div></td>
-            <td class="td-tipo"><span class="badge badge-push">PUSH</span></td>
             <td><span class="sr push">4 × 12</span></td>
             <td>Serie extra. +2.5 kg si S1 cómodo.</td>
           </tr>
           <tr>
             <td><div class="ex-name">Press Francés Mancuernas</div></td>
-            <td class="td-tipo"><span class="badge badge-push">PUSH</span></td>
             <td><span class="sr push">3 × 10</span></td>
             <td>Sin cambio en series. +2 kg si S1 cómodo.</td>
           </tr>
@@ -746,13 +718,12 @@
       </div>
       <div class="day-desc">Calentamiento: 5 min bici estática moderada + 2 series de extensión de cuádriceps al 40% de carga. Empieza con prensa — mayor carga, mayor estímulo anabólico cuando estás fresco.</div>
       <table class="ex-table">
-        <thead><tr><th>Ejercicio</th><th class="h-tipo">Tipo</th><th>Series × Reps</th><th>Técnica y Tips</th></tr></thead>
+        <thead><tr><th>Ejercicio</th><th>Series × Reps</th><th>Técnica y Tips</th></tr></thead>
         <tbody>
           <tr>
             <td>
               <div class="ex-name">Prensa de Piernas <span class="badge badge-priority">PRINCIPAL</span></div>
             </td>
-            <td class="td-tipo"><span class="badge badge-legs">LEGS</span></td>
             <td><span class="sr legs">4 × 12/10/8/6</span></td>
             <td>Pies a anchura de hombros, altura media. Bajar a 90° sin que la espalda baja se despegue. No bloquear rodillas arriba. Última serie de 6: al fallo técnico. Descanso 2 min. Pirámide ascendente.</td>
           </tr>
@@ -760,7 +731,6 @@
             <td>
               <div class="ex-name">Sentadilla Goblet con Mancuerna</div>
             </td>
-            <td class="td-tipo"><span class="badge badge-legs">LEGS</span></td>
             <td><span class="sr legs">3 × 12</span></td>
             <td>Mancuerna vertical frente al pecho. Pies ligeramente más abiertos que hombros, punta hacia afuera. Baja por debajo del paralelo si la movilidad lo permite. Talones en el suelo todo el recorrido.</td>
           </tr>
@@ -768,7 +738,6 @@
             <td>
               <div class="ex-name">Extensión de Cuádriceps en Máquina</div>
             </td>
-            <td class="td-tipo"><span class="badge badge-legs">LEGS</span></td>
             <td><span class="sr legs">3 × 15</span></td>
             <td>Pausa 2 seg en contracción máxima. Excéntrico 3 seg. Ajustar eje de la máquina con la rodilla. No usar carga tan alta que pierdas el control en la bajada.</td>
           </tr>
@@ -776,7 +745,6 @@
             <td>
               <div class="ex-name">Peso Muerto Rumano con Mancuernas</div>
             </td>
-            <td class="td-tipo"><span class="badge badge-legs">LEGS</span></td>
             <td><span class="sr legs">4 × 10</span></td>
             <td>Espalda neutra en todo el recorrido. Mancuernas pegadas a los muslos. Para cuando sientas el tirón en isquios — no más abajo si la espalda redondea. Este ejercicio tiene el mayor potencial de lesión si se ejecuta mal.</td>
           </tr>
@@ -784,7 +752,6 @@
             <td>
               <div class="ex-name">Curl Femoral Tumbado</div>
             </td>
-            <td class="td-tipo"><span class="badge badge-legs">LEGS</span></td>
             <td><span class="sr legs">3 × 12</span></td>
             <td>Caderas pegadas al acolchado. Subir explosivo, bajar 3 seg. Isquios en hipertrofia responden muy bien al trabajo excéntrico lento.</td>
           </tr>
@@ -792,7 +759,6 @@
             <td>
               <div class="ex-name">Elevación de Gemelos de Pie</div>
             </td>
-            <td class="td-tipo"><span class="badge badge-legs">LEGS</span></td>
             <td><span class="sr legs">4 × 20</span></td>
             <td>Máximo rango: talón abajo, máxima extensión arriba. Pausa 2 seg en contracción. El gemelo necesita alto volumen y tempo lento para responder.</td>
           </tr>
@@ -800,7 +766,6 @@
             <td>
               <div class="ex-name">Elevación de Piernas en Barra</div>
             </td>
-            <td class="td-tipo"><span class="badge badge-core">CORE</span></td>
             <td><span class="sr core">3 × 12</span></td>
             <td>Sin balanceo. Retroversión pélvica al subir. Si no llegas a 90° sin redondear la zona lumbar, trabaja con rodillas flexionadas primero.</td>
           </tr>
@@ -808,7 +773,6 @@
             <td>
               <div class="ex-name">Hiperextensiones con Disco</div>
             </td>
-            <td class="td-tipo"><span class="badge badge-core">CORE</span></td>
             <td><span class="sr core">3 × 15</span></td>
             <td>Disco 5–10 kg en pecho. Sube hasta la línea del cuerpo — no hiperextender. Crítico para el equilibrio lumbar/abdominal y para compensar la jornada sedentaria.</td>
           </tr>
@@ -816,7 +780,6 @@
             <td>
               <div class="ex-name">Plank Frontal + Lateral</div>
             </td>
-            <td class="td-tipo"><span class="badge badge-core">CORE</span></td>
             <td><span class="sr core">2 × 45 seg + 35 seg c/lado</span></td>
             <td>Sin descanso entre frontal y lateral. 60 seg de descanso entre rondas. Activar glúteos y abdomen simultáneamente en el frontal.</td>
           </tr>
@@ -833,47 +796,40 @@
       </div>
       <div class="day-desc">Añadir zancadas caminando como finalizador de cuádriceps. Progresión en prensa y peso muerto rumano.</div>
       <table class="ex-table">
-        <thead><tr><th>Ejercicio</th><th class="h-tipo">Tipo</th><th>S2 — Series × Reps</th><th>Ajuste</th></tr></thead>
+        <thead><tr><th>Ejercicio</th><th>S2 — Series × Reps</th><th>Ajuste</th></tr></thead>
         <tbody>
           <tr>
             <td><div class="ex-name">Prensa de Piernas</div></td>
-            <td class="td-tipo"><span class="badge badge-legs">LEGS</span></td>
             <td><span class="sr legs">5 × 12/10/8/6/6</span></td>
             <td>Serie extra. +10 kg si S1 fue controlado en las series pesadas.</td>
           </tr>
           <tr>
             <td><div class="ex-name">Sentadilla Goblet</div></td>
-            <td class="td-tipo"><span class="badge badge-legs">LEGS</span></td>
             <td><span class="sr legs">3 × 12</span></td>
             <td>+4 kg en mancuerna. Añadir pausa de 2 seg abajo.</td>
           </tr>
           <tr>
             <td><div class="ex-name">Extensión Cuádriceps</div></td>
-            <td class="td-tipo"><span class="badge badge-legs">LEGS</span></td>
             <td><span class="sr legs">4 × 15</span></td>
             <td>Serie extra. Reducir descanso a 60 seg entre series.</td>
           </tr>
           <tr>
             <td><div class="ex-name">Peso Muerto Rumano</div></td>
-            <td class="td-tipo"><span class="badge badge-legs">LEGS</span></td>
             <td><span class="sr legs">4 × 10</span></td>
             <td>+4 kg si S1 técnicamente limpio. Añadir pausa 1 seg en posición de máximo estiramiento.</td>
           </tr>
           <tr>
             <td><div class="ex-name">Curl Femoral</div></td>
-            <td class="td-tipo"><span class="badge badge-legs">LEGS</span></td>
             <td><span class="sr legs">4 × 12</span></td>
             <td>Serie extra. Excéntrico 4 seg esta semana.</td>
           </tr>
           <tr>
             <td><div class="ex-name">Zancadas Caminando con Mancuernas</div></td>
-            <td class="td-tipo"><span class="badge badge-legs">LEGS</span></td>
             <td><span class="sr legs">3 × 12 pasos c/lado</span></td>
             <td>Nuevo ejercicio S2. Mancuernas ligeras al principio. Rodilla trasera casi toca el suelo. Torso erguido. Finalizador de cuádriceps y glúteo.</td>
           </tr>
           <tr>
             <td><div class="ex-name">Gemelos + Core</div></td>
-            <td class="td-tipo"><span class="badge badge-core">CORE</span></td>
             <td><span class="sr core">Sin cambio</span></td>
             <td>Igual que S1.</td>
           </tr>
@@ -902,13 +858,12 @@
       </div>
       <div class="day-desc">Calentamiento específico de hombro: rotaciones externas con banda, 2×15. El deltoides posterior es el más importante para equilibrar la anteroversión escapular generada por el trabajo de oficina y las sesiones de pecho.</div>
       <table class="ex-table">
-        <thead><tr><th>Ejercicio</th><th class="h-tipo">Tipo</th><th>Series × Reps</th><th>Técnica y Tips</th></tr></thead>
+        <thead><tr><th>Ejercicio</th><th>Series × Reps</th><th>Técnica y Tips</th></tr></thead>
         <tbody>
           <tr>
             <td>
               <div class="ex-name">Press de Hombros Mancuernas <span class="badge badge-priority">PRINCIPAL</span></div>
             </td>
-            <td class="td-tipo"><span class="badge badge-push">PUSH</span></td>
             <td><span class="sr push">4 × 10/8/8/6</span></td>
             <td>Sentado con respaldo 90°. Codos ligeramente por delante del plano del torso. No bloquear arriba. Pirámide ascendente. Escápulas estables durante todo el movimiento.</td>
           </tr>
@@ -916,7 +871,6 @@
             <td>
               <div class="ex-name">Elevaciones Laterales con Mancuernas</div>
             </td>
-            <td class="td-tipo"><span class="badge badge-push">PUSH</span></td>
             <td><span class="sr push">4 × 15</span></td>
             <td>Peso muy controlado — el deltoides lateral es pequeño. Codo ligeramente flexionado y fijo. Meñique ligeramente más alto que el pulgar al llegar arriba. Sin impulso del torso. Lleva hasta justo el paralelo. Descanso 60 seg.</td>
           </tr>
@@ -924,7 +878,6 @@
             <td>
               <div class="ex-name">Face Pull en Polea (cuerda alta)</div>
             </td>
-            <td class="td-tipo"><span class="badge badge-push">PUSH</span></td>
             <td><span class="sr push">4 × 15</span></td>
             <td>Polea a altura de ojos o superior. Tirón hasta la cara separando las manos al final. Codos a altura de hombros o por encima. Activa deltoides posterior y manguito rotador. Fundamental para el equilibrio postural. Peso ligero.</td>
           </tr>
@@ -932,7 +885,6 @@
             <td>
               <div class="ex-name">Pájaros / Elevaciones Posteriores Inclinado</div>
             </td>
-            <td class="td-tipo"><span class="badge badge-push">PUSH</span></td>
             <td><span class="sr push">3 × 15</span></td>
             <td>Torso inclinado 45°, espalda neutra. Codos con flexión ligera y fija. Mancuernas hacia atrás y arriba. El deltoides posterior es el músculo más ignorado del tren superior y el que más diferencia hace en la postura.</td>
           </tr>
@@ -940,7 +892,6 @@
             <td>
               <div class="ex-name">Press Inclinado Mancuernas (30°) — Apoyo</div>
             </td>
-            <td class="td-tipo"><span class="badge badge-push">PUSH</span></td>
             <td><span class="sr push">3 × 10</span></td>
             <td>Pecho como apoyo esta sesión. Carga inferior al Push A. El objetivo es acumular volumen de pecho semanal, no maximizar carga. Técnica perfecta sobre carga máxima.</td>
           </tr>
@@ -948,7 +899,6 @@
             <td>
               <div class="ex-name">Extensión Tríceps sobre la Cabeza (mancuerna)</div>
             </td>
-            <td class="td-tipo"><span class="badge badge-push">PUSH</span></td>
             <td><span class="sr push">3 × 12</span></td>
             <td>De pie o sentado. Mancuerna con dos manos detrás de la cabeza. Codos apuntando al techo. Trabaja la cabeza larga del tríceps en su posición de máximo estiramiento — la más efectiva para hipertrofia.</td>
           </tr>
@@ -965,35 +915,30 @@
       </div>
       <div class="day-desc">Superserie laterales + face pull. Progresión en press de hombros.</div>
       <table class="ex-table">
-        <thead><tr><th>Ejercicio</th><th class="h-tipo">Tipo</th><th>S2 — Series × Reps</th><th>Ajuste</th></tr></thead>
+        <thead><tr><th>Ejercicio</th><th>S2 — Series × Reps</th><th>Ajuste</th></tr></thead>
         <tbody>
           <tr>
             <td><div class="ex-name">Press Hombros Mancuernas</div></td>
-            <td class="td-tipo"><span class="badge badge-push">PUSH</span></td>
             <td><span class="sr push">5 × 10/8/8/6/6</span></td>
             <td>Serie extra. +2 kg si S1 cómodo.</td>
           </tr>
           <tr>
             <td><div class="ex-name">Laterales + Face Pull (superserie)</div></td>
-            <td class="td-tipo"><span class="badge badge-push">PUSH</span></td>
             <td><span class="sr push">4 rondas · 15 + 15</span></td>
             <td>Sin descanso entre laterales y face pull. 90 seg entre rondas. Alta fatiga de deltoides lateral y posterior simultáneamente.</td>
           </tr>
           <tr>
             <td><div class="ex-name">Pájaros Posteriores</div></td>
-            <td class="td-tipo"><span class="badge badge-push">PUSH</span></td>
             <td><span class="sr push">4 × 15</span></td>
             <td>Serie extra. +2 kg si S1 cómodo. Añadir pausa 2 seg en contracción.</td>
           </tr>
           <tr>
             <td><div class="ex-name">Press Inclinado Apoyo</div></td>
-            <td class="td-tipo"><span class="badge badge-push">PUSH</span></td>
             <td><span class="sr push">3 × 10</span></td>
             <td>Sin cambio. Carga estable.</td>
           </tr>
           <tr>
             <td><div class="ex-name">Ext. Tríceps sobre la Cabeza</div></td>
-            <td class="td-tipo"><span class="badge badge-push">PUSH</span></td>
             <td><span class="sr push">3 × 12</span></td>
             <td>+2 kg si S1 cómodo.</td>
           </tr>
@@ -1022,13 +967,12 @@
       </div>
       <div class="day-desc">Sesión de cierre semanal. El cuerpo lleva 4 días de trabajo acumulado — la carga en esta sesión debe ser honesta, no heroica. Si la fuerza ha bajado notablemente respecto al lunes, es señal normal de fatiga acumulada, no de mala sesión.</div>
       <table class="ex-table">
-        <thead><tr><th>Ejercicio</th><th class="h-tipo">Tipo</th><th>Series × Reps</th><th>Técnica y Tips</th></tr></thead>
+        <thead><tr><th>Ejercicio</th><th>Series × Reps</th><th>Técnica y Tips</th></tr></thead>
         <tbody>
           <tr>
             <td>
               <div class="ex-name">Jalón al Pecho Agarre Prono <span class="badge badge-priority">PRINCIPAL</span></div>
             </td>
-            <td class="td-tipo"><span class="badge badge-pull">PULL</span></td>
             <td><span class="sr pull">4 × 12/10/8/6</span></td>
             <td>Agarre ligeramente más ancho que hombros. Inclinar torso 15° hacia atrás. Llevar barra a clavícula — no al pecho. Escápulas bajan antes de que los codos doblen. Sin balanceo. Pirámide ascendente.</td>
           </tr>
@@ -1036,7 +980,6 @@
             <td>
               <div class="ex-name">Jalón al Pecho Agarre Supino (palmas hacia ti)</div>
             </td>
-            <td class="td-tipo"><span class="badge badge-pull">PULL</span></td>
             <td><span class="sr pull">3 × 10</span></td>
             <td>Agarre algo más cerrado que el prono. El supino activa más el dorsal inferior y el bíceps. Tirón a la parte alta del pecho. Variante que complementa al jalón prono activando ángulos distintos.</td>
           </tr>
@@ -1044,7 +987,6 @@
             <td>
               <div class="ex-name">Jalón con Agarre Neutro (triángulo o cuerda)</div>
             </td>
-            <td class="td-tipo"><span class="badge badge-pull">PULL</span></td>
             <td><span class="sr pull">3 × 12</span></td>
             <td>Tercer ángulo del trabajo vertical. El agarre neutro permite mayor recorrido. Tirón profundo a la parte alta del abdomen. Carga inferior a los jalones anteriores.</td>
           </tr>
@@ -1052,7 +994,6 @@
             <td>
               <div class="ex-name">Dominadas (asistidas si es necesario)</div>
             </td>
-            <td class="td-tipo"><span class="badge badge-pull">PULL</span></td>
             <td><span class="sr pull">3 × máx (mín 6)</span></td>
             <td>Si haces más de 10 reps con buena técnica: añade lastre. Si menos de 6: usa la máquina asistida. Las dominadas son el ejercicio de anchura de espalda con mayor activación del dorsal. Si el bíceps/antebrazo molesta: saltar esta semana y añadir en S2.</td>
           </tr>
@@ -1060,7 +1001,6 @@
             <td>
               <div class="ex-name">Curl con Mancuerna en Banco Inclinado</div>
             </td>
-            <td class="td-tipo"><span class="badge badge-pull">PULL</span></td>
             <td><span class="sr pull">3 × 12</span></td>
             <td>Banco a 45–60°. El ángulo pone el bíceps en posición de máximo estiramiento al inicio. Trabaja especialmente la cabeza larga. Carga ligera — este ángulo es muy efectivo incluso con poco peso. Agarre neutro si hay molestia.</td>
           </tr>
@@ -1068,7 +1008,6 @@
             <td>
               <div class="ex-name">Hiperextensiones con Disco (Lumbar)</div>
             </td>
-            <td class="td-tipo"><span class="badge badge-core">CORE</span></td>
             <td><span class="sr core">3 × 15</span></td>
             <td>Cierre de sesión con lumbar. Disco 5–10 kg. Sube hasta la línea del cuerpo. Compensar el trabajo de jalones que carga la columna en flexión con extensión controlada.</td>
           </tr>
@@ -1085,41 +1024,35 @@
       </div>
       <div class="day-desc">Progresión en jalones. Si las dominadas fueron bien en S1, añadir lastre o reducir asistencia.</div>
       <table class="ex-table">
-        <thead><tr><th>Ejercicio</th><th class="h-tipo">Tipo</th><th>S2 — Series × Reps</th><th>Ajuste</th></tr></thead>
+        <thead><tr><th>Ejercicio</th><th>S2 — Series × Reps</th><th>Ajuste</th></tr></thead>
         <tbody>
           <tr>
             <td><div class="ex-name">Jalón Prono</div></td>
-            <td class="td-tipo"><span class="badge badge-pull">PULL</span></td>
             <td><span class="sr pull">5 × 12/10/8/6/6</span></td>
             <td>Serie extra. +5 kg si S1 controlado en las últimas series.</td>
           </tr>
           <tr>
             <td><div class="ex-name">Jalón Supino</div></td>
-            <td class="td-tipo"><span class="badge badge-pull">PULL</span></td>
             <td><span class="sr pull">4 × 10</span></td>
             <td>Serie extra. +5 kg.</td>
           </tr>
           <tr>
             <td><div class="ex-name">Jalón Agarre Neutro</div></td>
-            <td class="td-tipo"><span class="badge badge-pull">PULL</span></td>
             <td><span class="sr pull">3 × 12</span></td>
             <td>Sin cambio en series. +5 kg si S1 cómodo.</td>
           </tr>
           <tr>
             <td><div class="ex-name">Dominadas</div></td>
-            <td class="td-tipo"><span class="badge badge-pull">PULL</span></td>
             <td><span class="sr pull">3 × máx</span></td>
             <td>Si S1 >10 reps: +5 kg lastre. Si S1 6–10: intentar 1 rep más por serie.</td>
           </tr>
           <tr>
             <td><div class="ex-name">Curl Banco Inclinado + Curl Martillo (superserie)</div></td>
-            <td class="td-tipo"><span class="badge badge-pull">PULL</span></td>
             <td><span class="sr pull">3 rondas · 10 + 12</span></td>
             <td>Sin descanso entre los dos curls. 90 seg entre rondas. Solo si el antebrazo no molesta.</td>
           </tr>
           <tr>
             <td><div class="ex-name">Hiperextensiones</div></td>
-            <td class="td-tipo"><span class="badge badge-core">CORE</span></td>
             <td><span class="sr core">3 × 15</span></td>
             <td>+2.5 kg en disco si S1 fue fácil.</td>
           </tr>
