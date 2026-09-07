@@ -3,857 +3,937 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PPL Hipertrofia — Prioridad Espalda</title>
+<title>Plan Golf + Rehab · 30 días</title>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #f5f2ed;
-  --surface: #ffffff;
-  --surface2: #eeebe5;
-  --border: #ddd9d0;
-  --ink: #1a1814;
-  --muted: #8a8278;
-  --push: #c8401a;
-  --pull-gold: #9a7000;
-  --legs: #2a6b4a;
+  --bg: #0f1a14;
+  --surface: #18241d;
+  --surface2: #1e2c24;
+  --border: #2a3a30;
+  --ink: #e8f0eb;
+  --muted: #7a8a80;
+  --rot: #4ade80;
+  --legs: #ff9540;
+  --cardio: #ffcc00;
+  --upper: #6b9bff;
+  --mobil: #c084fc;
+  --rehab: #f472b6;
+  --warn: #ff5555;
   --mono: 'JetBrains Mono', monospace;
 }
 * { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior:smooth; }
 body { background:var(--bg); color:var(--ink); font-family:'Outfit',sans-serif; font-size:15px; }
 
-/* HERO */
-.hero { background:var(--ink); color:var(--bg); padding:40px 20px 32px; }
-.hero-tag { font-family:var(--mono); font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--push); margin-bottom:12px; }
-.hero h1 { font-family:'Archivo Black',sans-serif; font-size:48px; line-height:0.95; letter-spacing:-1px; }
-.hero h1 em { font-style:normal; color:var(--push); }
-.hero-sub { margin-top:14px; color:rgba(245,242,237,0.5); font-size:12px; line-height:1.6; }
-.hero-pills { display:flex; gap:8px; margin-top:20px; flex-wrap:wrap; }
-.pill { padding:5px 12px; border:1px solid rgba(245,242,237,0.15); font-family:var(--mono); font-size:10px; color:rgba(245,242,237,0.5); }
-.pill.hi { border-color:var(--push); color:var(--push); }
+.hero { background:linear-gradient(135deg,#0a1410 0%,#1e2c24 100%); padding:36px 20px 28px; border-bottom:1px solid var(--border); position:relative; overflow:hidden; }
+.hero::after { content:'⛳'; position:absolute; right:-10px; bottom:-30px; font-size:140px; opacity:0.05; }
+.hero-tag { font-family:var(--mono); font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--rot); margin-bottom:12px; }
+.hero h1 { font-family:'Archivo Black',sans-serif; font-size:42px; line-height:0.95; letter-spacing:-1px; }
+.hero h1 em { font-style:normal; color:var(--rehab); }
+.hero-sub { margin-top:14px; color:var(--muted); font-size:12.5px; line-height:1.6; max-width:580px; }
+.hero-pills { display:flex; gap:8px; margin-top:18px; flex-wrap:wrap; }
+.pill { padding:5px 11px; border:1px solid var(--border); font-family:var(--mono); font-size:10px; color:var(--muted); }
+.pill.hi { border-color:var(--rot); color:var(--rot); }
+.pill.rehab { border-color:var(--rehab); color:var(--rehab); }
 
-/* NAV */
-.nav { position:sticky; top:0; z-index:100; background:var(--ink); display:flex; overflow-x:auto; scrollbar-width:none; border-bottom:2px solid #2a2622; }
+.nav { position:sticky; top:0; z-index:100; background:var(--surface); display:flex; overflow-x:auto; scrollbar-width:none; border-bottom:1px solid var(--border); }
 .nav::-webkit-scrollbar { display:none; }
-.nav-btn { flex-shrink:0; padding:12px 16px; background:none; border:none; color:rgba(245,242,237,0.35); font-family:var(--mono); font-size:10px; letter-spacing:1px; text-transform:uppercase; cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-2px; white-space:nowrap; transition:color 0.2s; }
-.nav-btn:hover { color:var(--bg); }
-.nav-btn.t-push.active { color:var(--push); border-bottom-color:var(--push); }
-.nav-btn.t-pull.active { color:#e8d5a0; border-bottom-color:#e8d5a0; }
-.nav-btn.t-legs.active { color:#7bc99a; border-bottom-color:#7bc99a; }
-.nav-btn.t-info.active { color:var(--bg); border-bottom-color:var(--bg); }
+.nav-btn { flex-shrink:0; padding:12px 16px; background:none; border:none; color:var(--muted); font-family:var(--mono); font-size:10px; letter-spacing:1px; text-transform:uppercase; cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-1px; white-space:nowrap; }
+.nav-btn:hover { color:var(--ink); }
+.nav-btn.t-rehab.active { color:var(--rehab); border-bottom-color:var(--rehab); }
+.nav-btn.t-rot.active { color:var(--rot); border-bottom-color:var(--rot); }
+.nav-btn.t-legs.active { color:var(--legs); border-bottom-color:var(--legs); }
+.nav-btn.t-upper.active { color:var(--upper); border-bottom-color:var(--upper); }
+.nav-btn.t-mobil.active { color:var(--mobil); border-bottom-color:var(--mobil); }
+.nav-btn.t-info.active { color:var(--ink); border-bottom-color:var(--ink); }
 
-/* SECTIONS */
 .section { display:none; padding:28px 16px; max-width:800px; margin:0 auto; }
 .section.active { display:block; }
 
-/* SECTION HEADER */
 .sec-tag { font-family:var(--mono); font-size:10px; letter-spacing:3px; text-transform:uppercase; margin-bottom:6px; }
-.sec-tag.push { color:var(--push); }
-.sec-tag.pull { color:var(--pull-gold); }
+.sec-tag.rehab { color:var(--rehab); }
+.sec-tag.rot { color:var(--rot); }
 .sec-tag.legs { color:var(--legs); }
-.sec-tag.info { color:var(--muted); }
+.sec-tag.upper { color:var(--upper); }
+.sec-tag.mobil { color:var(--mobil); }
+.sec-tag.info { color:var(--ink); }
 .sec-title { font-family:'Archivo Black',sans-serif; font-size:26px; color:var(--ink); margin-bottom:8px; }
 .sec-desc { color:var(--muted); font-size:13px; line-height:1.7; margin-bottom:24px; }
 
-/* WEEK TABS */
-.wtabs { display:flex; gap:8px; margin-bottom:20px; }
-.wtab { padding:7px 18px; border:1.5px solid var(--border); background:none; color:var(--muted); font-family:var(--mono); font-size:10px; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:all 0.2s; }
-.wtab.active { background:var(--ink); border-color:var(--ink); color:var(--bg); }
-.wcontent { display:none; }
-.wcontent.active { display:block; }
-
-/* DAY HEADER */
-.day-header { display:flex; align-items:center; gap:12px; margin-bottom:16px; }
+.day-header { display:flex; align-items:center; gap:12px; margin-bottom:16px; flex-wrap:wrap; }
 .day-badge { font-family:'Archivo Black',sans-serif; font-size:11px; padding:4px 10px; letter-spacing:1px; }
-.day-badge.push { background:var(--push); color:white; }
-.day-badge.pull { background:var(--ink); color:#e8d5a0; }
-.day-badge.legs { background:var(--legs); color:white; }
+.day-badge.rehab { background:var(--rehab); color:#0a1410; }
+.day-badge.rot { background:var(--rot); color:#0a1410; }
+.day-badge.legs { background:var(--legs); color:#0a1410; }
+.day-badge.upper { background:var(--upper); color:#0a1410; }
+.day-badge.mobil { background:var(--mobil); color:#0a1410; }
+.day-badge.cardio { background:var(--cardio); color:#0a1410; }
 .day-title-text { font-family:'Archivo Black',sans-serif; font-size:15px; }
-.day-intro { background:var(--surface2); border-left:3px solid var(--border); padding:12px 14px; font-size:12.5px; color:var(--muted); line-height:1.7; margin-bottom:20px; border-radius:0 2px 2px 0; }
+.day-intro { background:var(--surface); border-left:3px solid var(--border); padding:12px 14px; font-size:12.5px; color:var(--muted); line-height:1.7; margin-bottom:20px; border-radius:0 2px 2px 0; }
 
-/* ACCORDION */
-.ex-list { display:flex; flex-direction:column; gap:8px; margin-bottom:24px; }
+.block-header { margin:24px 0 12px; padding-bottom:8px; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:10px; }
+.block-num { font-family:var(--mono); font-size:11px; color:var(--muted); background:var(--surface2); padding:3px 8px; border-radius:2px; }
+.block-title { font-family:'Archivo Black',sans-serif; font-size:14px; letter-spacing:0.5px; }
+.block-title.cardio { color:var(--cardio); }
+.block-title.rehab { color:var(--rehab); }
+.block-title.main { color:var(--ink); }
+.block-time { margin-left:auto; font-family:var(--mono); font-size:10px; color:var(--muted); }
 
-.ex-item { background:var(--surface); border:1.5px solid var(--border); border-radius:2px; overflow:hidden; }
-.ex-item.priority { border-color:var(--ink); }
+.warn-box { border-left:3px solid var(--warn); background:rgba(255,85,85,0.06); padding:12px 14px; font-size:12.5px; line-height:1.6; margin-bottom:18px; color:var(--ink); }
+.warn-box strong { color:var(--warn); }
+.alert-box { border-left:3px solid var(--rot); background:rgba(74,222,128,0.06); padding:12px 14px; margin:14px 0; font-size:13px; line-height:1.7; color:var(--ink); }
+.alert-box strong { color:var(--rot); }
+.rehab-box { border-left:3px solid var(--rehab); background:rgba(244,114,182,0.06); padding:12px 14px; margin:14px 0; font-size:13px; line-height:1.7; color:var(--ink); }
+.rehab-box strong { color:var(--rehab); }
+.gold-box { border-left:3px solid var(--cardio); background:rgba(255,204,0,0.05); padding:12px 14px; margin:12px 0; font-size:12.5px; color:var(--muted); line-height:1.7; }
+.gold-box strong { color:var(--cardio); }
 
-.ex-trigger {
-  width:100%; text-align:left; background:none; border:none; padding:14px 16px;
-  cursor:pointer; display:flex; align-items:center; justify-content:space-between;
-  gap:12px; transition:background 0.15s;
-}
-.ex-trigger:hover { background:rgba(0,0,0,0.02); }
+.ex-list { display:flex; flex-direction:column; gap:8px; margin-bottom:16px; }
+.ex-item { background:var(--surface); border:1px solid var(--border); border-radius:2px; overflow:hidden; }
+.ex-item.priority { border-color:var(--rot); }
+.ex-item.rehab-mark { border-left:3px solid var(--rehab); }
+
+.ex-trigger { width:100%; text-align:left; background:none; border:none; padding:14px 16px; cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:12px; color:var(--ink); }
+.ex-trigger:hover { background:var(--surface2); }
 .ex-trigger-left { display:flex; flex-direction:column; gap:3px; flex:1; min-width:0; }
-.ex-name { font-weight:600; font-size:14px; color:var(--ink); line-height:1.3; }
+.ex-name { font-weight:600; font-size:14px; line-height:1.3; }
 .ex-note { font-size:11.5px; color:var(--muted); }
 
-.ex-sr-inline { font-family:var(--mono); font-size:12px; font-weight:500; white-space:nowrap; flex-shrink:0; }
-.ex-sr-inline.push { color:var(--push); }
-.ex-sr-inline.pull { color:var(--pull-gold); }
-.ex-sr-inline.legs { color:var(--legs); }
-.ex-sr-inline.core { color:#666; }
+.ex-sr { font-family:var(--mono); font-size:12px; font-weight:500; white-space:nowrap; flex-shrink:0; }
+.ex-sr.rot { color:var(--rot); }
+.ex-sr.legs { color:var(--legs); }
+.ex-sr.cardio { color:var(--cardio); }
+.ex-sr.upper { color:var(--upper); }
+.ex-sr.mobil { color:var(--mobil); }
+.ex-sr.rehab { color:var(--rehab); }
 
 .ex-chevron { width:18px; height:18px; flex-shrink:0; transition:transform 0.25s; color:var(--muted); }
 .ex-item.open .ex-chevron { transform:rotate(180deg); }
 
-.badge-prio { display:inline-block; background:var(--ink); color:#e8d5a0; font-family:var(--mono); font-size:9px; padding:2px 7px; letter-spacing:1px; margin-top:2px; align-self:flex-start; }
+.badge-prio { display:inline-block; background:var(--rot); color:#0a1410; font-family:var(--mono); font-size:9px; padding:2px 7px; letter-spacing:1px; margin-top:2px; align-self:flex-start; font-weight:600; }
+.badge-golf { display:inline-block; background:rgba(74,222,128,0.15); color:var(--rot); font-family:var(--mono); font-size:9px; padding:2px 7px; letter-spacing:1px; margin-top:2px; align-self:flex-start; border:1px solid var(--rot); }
+.badge-safe { display:inline-block; background:rgba(107,155,255,0.15); color:var(--upper); font-family:var(--mono); font-size:9px; padding:2px 7px; letter-spacing:1px; margin-top:2px; align-self:flex-start; border:1px solid var(--upper); }
+.badge-rehab { display:inline-block; background:var(--rehab); color:#0a1410; font-family:var(--mono); font-size:9px; padding:2px 7px; letter-spacing:1px; margin-top:2px; align-self:flex-start; font-weight:600; }
 
-/* DETAIL PANEL */
-.ex-detail { display:none; border-top:1.5px solid var(--border); }
+.ex-detail { display:none; border-top:1px solid var(--border); }
 .ex-item.open .ex-detail { display:block; }
+.ex-detail-inner { padding:16px; background:var(--surface2); }
 
-.ex-detail-inner { padding:16px; }
-
-.detail-row { margin-bottom:16px; }
-.detail-label { font-family:var(--mono); font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
+.detail-row { margin-bottom:14px; }
+.detail-label { font-family:var(--mono); font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-bottom:5px; }
 .detail-sr { font-family:var(--mono); font-size:18px; font-weight:500; color:var(--ink); }
-.detail-sr.push { color:var(--push); }
-.detail-sr.pull { color:var(--pull-gold); }
+.detail-sr.rot { color:var(--rot); }
 .detail-sr.legs { color:var(--legs); }
-.detail-sr.core { color:#555; }
-
-.ex-svg-wrap { background:var(--surface2); border-radius:2px; padding:16px; display:flex; justify-content:center; margin-bottom:16px; }
-.ex-svg-wrap svg { max-width:100%; height:auto; }
+.detail-sr.rehab { color:var(--rehab); }
 
 .detail-tips { font-size:13.5px; color:var(--ink); line-height:1.75; }
+.detail-tips strong { color:var(--rot); }
 
-/* S2 DIFF */
-.s2-diff { background:rgba(200,64,26,0.05); border-left:3px solid var(--push); padding:10px 14px; font-size:12.5px; color:var(--ink); line-height:1.6; margin-top:8px; }
-.s2-diff strong { color:var(--push); }
-
-/* INFO BOXES */
-.alert-box { border-left:3px solid var(--push); background:rgba(200,64,26,0.05); padding:14px 16px; margin:16px 0; font-size:13px; line-height:1.7; }
-.info-box { border-left:3px solid var(--legs); background:rgba(42,107,74,0.05); padding:14px 16px; margin:12px 0; font-size:13px; color:var(--muted); line-height:1.7; }
-.gold-box { border-left:3px solid var(--pull-gold); background:rgba(138,106,0,0.05); padding:14px 16px; margin:12px 0; font-size:13px; color:var(--muted); line-height:1.7; }
-
-/* OVERVIEW */
-.ov-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:20px; }
-.ov-card { background:var(--surface); border:1.5px solid var(--border); padding:16px; }
+.ov-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:20px; }
+.ov-card { background:var(--surface); border:1px solid var(--border); padding:14px; }
 .ov-label { font-family:var(--mono); font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-bottom:4px; }
-.ov-val { font-family:'Archivo Black',sans-serif; font-size:18px; color:var(--ink); line-height:1.2; }
+.ov-val { font-family:'Archivo Black',sans-serif; font-size:16px; color:var(--ink); line-height:1.2; }
 .ov-sub { font-size:11.5px; color:var(--muted); margin-top:4px; line-height:1.4; }
 
-/* NUTR */
-.nutr-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:20px; }
+.phase-table { width:100%; border-collapse:collapse; font-size:12.5px; margin-top:12px; }
+.phase-table th { background:var(--surface2); color:var(--muted); font-family:var(--mono); font-size:9px; letter-spacing:2px; text-transform:uppercase; padding:8px 10px; text-align:left; border-bottom:1px solid var(--border); }
+.phase-table td { padding:9px 10px; border-bottom:1px solid var(--border); color:var(--ink); line-height:1.4; }
+.phase-table td:first-child { font-family:'Archivo Black',sans-serif; color:var(--rot); font-size:13px; min-width:50px; }
 </style>
 </head>
 <body>
 
 <div class="hero">
-  <div class="hero-tag">Hipertrofia · 2 Semanas · Push / Pull / Legs</div>
-  <h1>MASA<br><em>ESPALDA</em><br>PRIMERO</h1>
-  <p class="hero-sub">85–86 kg · 181 cm · Prioridad espalda · Doble Pull semanal · Superávit leve</p>
+  <div class="hero-tag">30 días · Rehab + Golf · 4 días integrados</div>
+  <h1>SWING +<br><em>RECUPERACIÓN</em></h1>
+  <p class="hero-sub">Epicondilitis medial + inflamación bíceps/antebrazo · Rehabilitación pautada por fisio · Cardio + rehab + fuerza específica en cada sesión · Diagnóstico médico confirmado</p>
   <div class="hero-pills">
-    <span class="pill hi">5 días/semana</span>
-    <span class="pill">Pull × 2 ★</span>
-    <span class="pill">Push × 2</span>
-    <span class="pill">Legs × 1</span>
+    <span class="pill hi">4 días integrados</span>
+    <span class="pill rehab">Rehab diaria</span>
+    <span class="pill">Cardio 30min/día</span>
+    <span class="pill">Dieta marcaje</span>
   </div>
 </div>
 
 <nav class="nav">
   <button class="nav-btn t-info active" onclick="showSection('overview')">General</button>
-  <button class="nav-btn t-pull" onclick="showSection('pull1')">Pull A</button>
-  <button class="nav-btn t-push" onclick="showSection('push1')">Push A</button>
-  <button class="nav-btn t-legs" onclick="showSection('legs')">Legs</button>
-  <button class="nav-btn t-push" onclick="showSection('push2')">Push B</button>
-  <button class="nav-btn t-pull" onclick="showSection('pull2')">Pull B</button>
-  <button class="nav-btn t-info" onclick="showSection('nutrition')">Nutrición</button>
+  <button class="nav-btn t-rehab" onclick="showSection('rehab')">Rehab Fisio</button>
+  <button class="nav-btn t-rot" onclick="showSection('d1')">L · Rotacional</button>
+  <button class="nav-btn t-legs" onclick="showSection('d2')">M · Piernas</button>
+  <button class="nav-btn t-upper" onclick="showSection('d3')">J · Torso</button>
+  <button class="nav-btn t-mobil" onclick="showSection('d4')">V · Movilidad + Velocidad</button>
+  <button class="nav-btn t-info" onclick="showSection('golfdays')">Días Golf</button>
 </nav>
 
 <!-- OVERVIEW -->
 <div class="section active" id="overview">
-  <div class="sec-tag info">Marco del Plan</div>
-  <div class="sec-title">Estructura 2 Semanas PPL</div>
-  <p class="sec-desc">Doble sesión Pull para priorizar espalda. Pull A trabaja grosor (remos). Pull B trabaja anchura (jalones). Combinados dan estímulo completo al dorsal.</p>
+  <div class="sec-tag info">Estrategia 30 días</div>
+  <div class="sec-title">Rehabilitación Integrada</div>
+  <p class="sec-desc">Tienes diagnóstico médico y pauta del fisio. Ese trabajo es prioridad absoluta. El plan de swing y fuerza continúa alrededor de la rehabilitación, no al revés. Estructura de cada sesión: cardio (calienta el sistema) → rehab (tejido caliente responde mejor a los isométricos) → trabajo específico.</p>
+
+  <div class="warn-box"><strong>Prioridad médica:</strong> Los ejercicios del fisio son intocables — se hacen todos los días independientemente de si tienes gym ese día o no. El plan de gym es 4 días. La rehab es 7 días.</div>
+
   <div class="ov-grid">
-    <div class="ov-card"><div class="ov-label">Lunes</div><div class="ov-val">Pull A</div><div class="ov-sub">Espalda grosor + Bíceps</div></div>
-    <div class="ov-card"><div class="ov-label">Martes</div><div class="ov-val">Push A</div><div class="ov-sub">Pecho volumen + Tríceps</div></div>
-    <div class="ov-card"><div class="ov-label">Miércoles</div><div class="ov-val">Legs</div><div class="ov-sub">Piernas + Core</div></div>
-    <div class="ov-card"><div class="ov-label">Jueves</div><div class="ov-val">Push B</div><div class="ov-sub">Hombros + Pecho apoyo</div></div>
-    <div class="ov-card"><div class="ov-label">Viernes</div><div class="ov-val">Pull B</div><div class="ov-sub">Espalda anchura + Bíceps</div></div>
-    <div class="ov-card"><div class="ov-label">S / D</div><div class="ov-val">Descanso</div><div class="ov-sub">Caminata + movilidad</div></div>
+    <div class="ov-card"><div class="ov-label">Lunes</div><div class="ov-val">Rotacional + Core</div><div class="ov-sub">Sesión más específica para swing</div></div>
+    <div class="ov-card"><div class="ov-label">Martes</div><div class="ov-val">Piernas Potencia</div><div class="ov-sub">Base del swing · Sin agarre exigente</div></div>
+    <div class="ov-card"><div class="ov-label">Jueves</div><div class="ov-val">Torso · Mantenimiento</div><div class="ov-sub">Máquinas · Codo protegido</div></div>
+    <div class="ov-card"><div class="ov-label">Viernes</div><div class="ov-val">Movilidad + Velocidad</div><div class="ov-sub">Prepara fin de semana golf</div></div>
+    <div class="ov-card"><div class="ov-label">X / S / D</div><div class="ov-val">Solo rehab + golf</div><div class="ov-sub">Días flexibles</div></div>
+    <div class="ov-card"><div class="ov-label">Duración total</div><div class="ov-val">75–90 min/sesión</div><div class="ov-sub">30 cardio + 15 rehab + 40 fuerza</div></div>
   </div>
-  <div class="alert-box"><strong>Bíceps / Antebrazo:</strong> Solo agarre neutro y polea estas dos semanas. El bíceps ya trabaja en todos los remos y jalones.</div>
-  <div class="gold-box"><strong>Superávit:</strong> +200–300 kcal sobre mantenimiento (~2550–2650 kcal/día). Proteína mínimo 190–200g/día. Superávit mayor engorda más de lo que muscula con tu % grasa actual.</div>
-  <div class="info-box"><strong>Progresión S1→S2:</strong> Añadir 1 serie a los ejercicios compuestos principales O +5% carga si las últimas reps de S1 fueron cómodas. No ambas cosas a la vez.</div>
+
+  <div class="rehab-box"><strong>Rehab en días sin gym:</strong> El miércoles, sábado y domingo también haces la rehab del fisio. Puede ser en casa, no necesitas ir al gym para eso. Isométricos + rotaciones, 10–15 minutos.</div>
+
+  <div class="alert-box"><strong>Regla de oro del fisio:</strong> "Si duele, no lo hagas". Se aplica a cada ejercicio, cada serie, cada rep. Dolor por encima de 3/10 en cualquier movimiento = paras ese ejercicio y sustituyes por su alternativa. La progresión es lenta a propósito.</div>
+
+  <div class="sec-tag info" style="margin-top:24px">Estructura horaria de cada sesión</div>
+  <table class="phase-table">
+    <thead><tr><th>Bloque</th><th>Duración</th><th>Contenido</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>30 min</td><td>Cardio (LISS o HIIT según día)</td></tr>
+      <tr><td>2</td><td>10–15 min</td><td>Rehab del fisio: isométricos + rotaciones prono/supinación</td></tr>
+      <tr><td>3</td><td>35–45 min</td><td>Trabajo específico del día (rotacional / piernas / torso / movilidad)</td></tr>
+    </tbody>
+  </table>
+
+  <div class="gold-box"><strong>Progresión esperada:</strong> Semanas 1–2: base del protocolo, sin forzar. Semanas 3–4: si la evolución es buena y el fisio lo autoriza, puedes empezar a aumentar carga en los isométricos y volver progresivamente a ejercicios con más agarre. El fisio determina el ritmo — no tú, ni yo.</div>
 </div>
 
-<!-- PULL A -->
-<div class="section" id="pull1">
-  <div class="sec-tag pull">Lunes · Sesión 1 de 5</div>
-  <div class="sec-title">Pull A — Grosor de Espalda</div>
-  <p class="sec-desc">Eje horizontal: remos. Construyen grosor de dorsal, trapecio medio e inferior y romboides. Mayor volumen de espalda de la semana.</p>
-  <div class="wtabs">
-    <button class="wtab active" onclick="showWeek('pull1',1)">Semana 1</button>
-    <button class="wtab" onclick="showWeek('pull1',2)">Semana 2</button>
-  </div>
+<!-- REHAB PROTOCOLO -->
+<div class="section" id="rehab">
+  <div class="sec-tag rehab">Prescripción Fisio</div>
+  <div class="sec-title">Protocolo de Rehabilitación</div>
+  <p class="sec-desc">Los ejercicios pautados por el fisio. Se hacen todos los días (7/7). En días de gym al inicio de la sesión tras el cardio. En días sin gym, en casa. Ambos brazos según indicación del fisio — el sano previene desequilibrios y el lesionado se recupera.</p>
 
-  <div class="wcontent active" id="pull1-w1">
-    <div class="day-header"><span class="day-badge pull">PULL A</span><span class="day-title-text">Espalda Grosor + Bíceps</span></div>
-    <div class="day-intro">Calentamiento: 5 min elíptica suave + 2 series de remo al 50% de carga de trabajo. Empieza con el ejercicio de mayor carga cuando el sistema nervioso está fresco.</div>
-    <div class="ex-list">
+  <div class="warn-box"><strong>Regla del dolor:</strong> Peso suficiente para sentir esfuerzo pero sin dolor. Si el dolor sube por encima de 3/10, reducir peso. Si aparece dolor agudo o punzante durante el ejercicio, parar y consultar al fisio.</div>
 
-      <div class="ex-item priority">
-        <button class="ex-trigger" onclick="toggleEx(this)">
-          <div class="ex-trigger-left">
-            <span class="ex-name">Remo en T (T-bar row)</span>
-            <span class="badge-prio">PRIORITARIO</span>
-            <span class="ex-note">Ejercicio principal · Pirámide ascendente</span>
-          </div>
-          <span class="ex-sr-inline pull">4×12/10/8/6</span>
-          <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="ex-detail">
-          <div class="ex-detail-inner">
-            <div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr pull">4 × 12 / 10 / 8 / 6</div></div>
-            <div class="ex-svg-wrap">
-              <svg viewBox="0 0 280 160" width="280" xmlns="http://www.w3.org/2000/svg">
-                <!-- Floor -->
-                <line x1="20" y1="145" x2="260" y2="145" stroke="#ccc" stroke-width="1.5"/>
-                <!-- T-bar machine base -->
-                <rect x="30" y="130" width="80" height="12" rx="2" fill="#bbb"/>
-                <line x1="70" y1="130" x2="70" y2="90" stroke="#999" stroke-width="5"/>
-                <line x1="50" y1="92" x2="110" y2="92" stroke="#999" stroke-width="5"/>
-                <!-- Weights on bar -->
-                <ellipse cx="50" cy="92" rx="6" ry="10" fill="#888"/>
-                <ellipse cx="110" cy="92" rx="6" ry="10" fill="#888"/>
-                <!-- Person torso inclined 45 -->
-                <!-- Feet -->
-                <ellipse cx="155" cy="143" rx="10" ry="4" fill="#333"/>
-                <ellipse cx="185" cy="143" rx="10" ry="4" fill="#333"/>
-                <!-- Legs -->
-                <line x1="155" y1="143" x2="160" y2="115" stroke="#333" stroke-width="5" stroke-linecap="round"/>
-                <line x1="185" y1="143" x2="180" y2="115" stroke="#333" stroke-width="5" stroke-linecap="round"/>
-                <!-- Hips -->
-                <ellipse cx="170" cy="113" rx="14" ry="8" fill="#444"/>
-                <!-- Torso inclined -->
-                <line x1="170" y1="113" x2="140" y2="85" stroke="#333" stroke-width="6" stroke-linecap="round"/>
-                <!-- Head -->
-                <circle cx="133" cy="78" r="10" fill="#333"/>
-                <!-- Arms pulling bar -->
-                <line x1="140" y1="88" x2="118" y2="96" stroke="#333" stroke-width="4" stroke-linecap="round"/>
-                <line x1="140" y1="92" x2="118" y2="100" stroke="#333" stroke-width="4" stroke-linecap="round"/>
-                <!-- Arrow showing movement -->
-                <line x1="118" y1="98" x2="100" y2="98" stroke="#9a7000" stroke-width="2" stroke-dasharray="4,3"/>
-                <polyline points="105,94 100,98 105,102" fill="none" stroke="#9a7000" stroke-width="2"/>
-                <!-- Labels -->
-                <text x="195" y="100" font-size="11" fill="#9a7000" font-family="sans-serif">Tirón a</text>
-                <text x="195" y="113" font-size="11" fill="#9a7000" font-family="sans-serif">cintura</text>
-                <text x="195" y="130" font-size="10" fill="#aaa" font-family="sans-serif">45° torso</text>
-              </svg>
-            </div>
-            <div class="detail-label">Técnica y Tips</div>
-            <div class="detail-tips">Agarre neutro con accesorio en V o triángulo. Torso a 45° del suelo — más inclinado activa más dorsal. Tirón a cintura, codos pegados al cuerpo. <strong>Pausa 1 seg en contracción máxima</strong> — ese segundo es lo que construye grosor. Escápulas retraídas antes de doblar el codo. En la última serie de 6 reps el 5º y 6º deben costarte. Espalda neutra obligatoria — si redondeas, baja la carga.</div>
-          </div>
+  <div class="ex-list">
+
+    <div class="ex-item rehab-mark">
+      <button class="ex-trigger" onclick="toggleEx(this)">
+        <div class="ex-trigger-left">
+          <span class="ex-name">Isométrico Agarre Prono (palma abajo)</span>
+          <span class="badge-rehab">FISIO</span>
+          <span class="ex-note">Brazo extendido · Sostener peso sin movimiento</span>
         </div>
-      </div>
-
-      <div class="ex-item">
-        <button class="ex-trigger" onclick="toggleEx(this)">
-          <div class="ex-trigger-left">
-            <span class="ex-name">Remo Unilateral con Mancuerna</span>
-            <span class="ex-note">Mayor recorrido · Activación unilateral superior</span>
-          </div>
-          <span class="ex-sr-inline pull">4×10 c/lado</span>
-          <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="ex-detail"><div class="ex-detail-inner">
-          <div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr pull">4 × 10 cada lado</div></div>
-          <div class="ex-svg-wrap">
-            <svg viewBox="0 0 280 160" width="280" xmlns="http://www.w3.org/2000/svg">
-              <line x1="20" y1="145" x2="260" y2="145" stroke="#ccc" stroke-width="1.5"/>
-              <!-- Bench -->
-              <rect x="80" y="100" width="90" height="12" rx="3" fill="#bbb"/>
-              <line x1="90" y1="112" x2="90" y2="130" stroke="#999" stroke-width="4"/>
-              <line x1="160" y1="112" x2="160" y2="130" stroke="#999" stroke-width="4"/>
-              <!-- Person -->
-              <ellipse cx="195" cy="141" rx="12" ry="5" fill="#333"/>
-              <line x1="195" y1="141" x2="190" y2="112" stroke="#333" stroke-width="5" stroke-linecap="round"/>
-              <!-- Torso horizontal -->
-              <line x1="190" y1="112" x2="130" y2="105" stroke="#333" stroke-width="6" stroke-linecap="round"/>
-              <!-- Head -->
-              <circle cx="120" cy="101" r="9" fill="#333"/>
-              <!-- Support hand on bench -->
-              <line x1="130" y1="108" x2="125" y2="100" stroke="#333" stroke-width="4" stroke-linecap="round"/>
-              <!-- Pulling arm -->
-              <line x1="160" y1="106" x2="165" y2="125" stroke="#333" stroke-width="4" stroke-linecap="round"/>
-              <!-- Dumbbell -->
-              <rect x="158" y="125" width="14" height="6" rx="1" fill="#666"/>
-              <ellipse cx="158" cy="128" rx="4" ry="6" fill="#555"/>
-              <ellipse cx="172" cy="128" rx="4" ry="6" fill="#555"/>
-              <!-- Arrow up -->
-              <line x1="165" y1="125" x2="165" y2="108" stroke="#9a7000" stroke-width="2" stroke-dasharray="4,3"/>
-              <polyline points="161,113 165,108 169,113" fill="none" stroke="#9a7000" stroke-width="2"/>
-              <text x="200" y="118" font-size="11" fill="#9a7000" font-family="sans-serif">Codo al</text>
-              <text x="200" y="131" font-size="11" fill="#9a7000" font-family="sans-serif">techo</text>
-            </svg>
-          </div>
-          <div class="detail-label">Técnica y Tips</div>
-          <div class="detail-tips">Rodilla y mano del mismo lado en banco. Codo al techo, ligera rotación del torso al final para máximo recorrido. No compensar con el hombro. Misma carga ambos lados — si hay asimetría trabaja el lado débil primero. Bajar la mancuerna con control 2–3 seg.</div>
-        </div></div>
-      </div>
-
-      <div class="ex-item">
-        <button class="ex-trigger" onclick="toggleEx(this)">
-          <div class="ex-trigger-left">
-            <span class="ex-name">Remo en Polea con Agarre Neutro</span>
-            <span class="ex-note">Complementario · Dorsal inferior · Carga menor</span>
-          </div>
-          <span class="ex-sr-inline pull">3×12</span>
-          <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="ex-detail"><div class="ex-detail-inner">
-          <div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr pull">3 × 12</div></div>
-          <div class="ex-svg-wrap">
-            <svg viewBox="0 0 280 160" width="280" xmlns="http://www.w3.org/2000/svg">
-              <line x1="20" y1="145" x2="260" y2="145" stroke="#ccc" stroke-width="1.5"/>
-              <!-- Pulley machine -->
-              <rect x="20" y="80" width="16" height="60" rx="2" fill="#bbb"/>
-              <circle cx="28" cy="82" r="6" fill="#999"/>
-              <!-- Cable -->
-              <line x1="28" y1="82" x2="100" y2="105" stroke="#888" stroke-width="1.5" stroke-dasharray="3,2"/>
-              <!-- Seat/platform -->
-              <rect x="80" y="118" width="100" height="8" rx="2" fill="#ccc"/>
-              <!-- Person seated -->
-              <!-- Torso upright -->
-              <line x1="160" y1="118" x2="158" y2="85" stroke="#333" stroke-width="6" stroke-linecap="round"/>
-              <!-- Head -->
-              <circle cx="156" cy="76" r="9" fill="#333"/>
-              <!-- Legs forward -->
-              <line x1="160" y1="118" x2="115" y2="120" stroke="#333" stroke-width="5" stroke-linecap="round"/>
-              <line x1="160" y1="118" x2="120" y2="122" stroke="#333" stroke-width="5" stroke-linecap="round"/>
-              <!-- Arms pulling -->
-              <line x1="158" y1="95" x2="108" y2="105" stroke="#333" stroke-width="4" stroke-linecap="round"/>
-              <!-- Triangle handle -->
-              <rect x="100" y="102" width="10" height="6" rx="1" fill="#666"/>
-              <!-- Arrow -->
-              <line x1="100" y1="105" x2="145" y2="105" stroke="#9a7000" stroke-width="2" stroke-dasharray="4,3"/>
-              <polyline points="140,101 145,105 140,109" fill="none" stroke="#9a7000" stroke-width="2"/>
-              <text x="185" y="100" font-size="11" fill="#9a7000" font-family="sans-serif">Tirón a</text>
-              <text x="185" y="113" font-size="11" fill="#9a7000" font-family="sans-serif">ombligo</text>
-            </svg>
-          </div>
-          <div class="detail-label">Técnica y Tips</div>
-          <div class="detail-tips">Polea baja con triángulo o cuerda. Agarre neutro activa más el dorsal inferior vs el agarre prono que carga más trapecio. Tirón a ombligo, no al pecho. Torso ligeramente inclinado hacia atrás al final del tirón. Carga inferior al remo en T.</div>
-        </div></div>
-      </div>
-
-      <div class="ex-item">
-        <button class="ex-trigger" onclick="toggleEx(this)">
-          <div class="ex-trigger-left">
-            <span class="ex-name">Pullover con Mancuerna</span>
-            <span class="ex-note">Serrato + Dorsal · Transición grosor-anchura</span>
-          </div>
-          <span class="ex-sr-inline pull">3×12</span>
-          <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="ex-detail"><div class="ex-detail-inner">
-          <div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr pull">3 × 12</div></div>
-          <div class="ex-svg-wrap">
-            <svg viewBox="0 0 280 160" width="280" xmlns="http://www.w3.org/2000/svg">
-              <line x1="20" y1="145" x2="260" y2="145" stroke="#ccc" stroke-width="1.5"/>
-              <!-- Bench -->
-              <rect x="80" y="95" width="120" height="14" rx="3" fill="#bbb"/>
-              <line x1="90" y1="109" x2="90" y2="130" stroke="#999" stroke-width="4"/>
-              <line x1="190" y1="109" x2="190" y2="130" stroke="#999" stroke-width="4"/>
-              <!-- Person lying -->
-              <ellipse cx="140" cy="93" rx="50" ry="8" fill="#444"/>
-              <!-- Head -->
-              <circle cx="88" cy="88" r="10" fill="#333"/>
-              <!-- Arms extending back -->
-              <line x1="120" y1="90" x2="68" y2="70" stroke="#333" stroke-width="4" stroke-linecap="round"/>
-              <line x1="120" y1="92" x2="68" y2="73" stroke="#333" stroke-width="4" stroke-linecap="round"/>
-              <!-- Dumbbell back position -->
-              <rect x="56" y="66" width="16" height="8" rx="1" fill="#666"/>
-              <ellipse cx="56" cy="70" rx="5" ry="7" fill="#555"/>
-              <ellipse cx="72" cy="70" rx="5" ry="7" fill="#555"/>
-              <!-- Arms in up position (ghost) -->
-              <line x1="140" y1="90" x2="140" y2="62" stroke="#9a7000" stroke-width="2" stroke-dasharray="3,3"/>
-              <!-- Arrow arc -->
-              <path d="M 68 70 Q 100 45 140 62" stroke="#9a7000" stroke-width="2" fill="none" stroke-dasharray="4,3"/>
-              <polyline points="135,58 140,62 138,68" fill="none" stroke="#9a7000" stroke-width="2"/>
-              <text x="195" y="78" font-size="11" fill="#9a7000" font-family="sans-serif">Hasta</text>
-              <text x="195" y="91" font-size="11" fill="#9a7000" font-family="sans-serif">vertical</text>
-            </svg>
-          </div>
-          <div class="detail-label">Técnica y Tips</div>
-          <div class="detail-tips">Tumbado transversal en banco — los hombros sobre el banco, las caderas ligeramente más bajas. Mancuerna con ambas manos. Desde detrás de la cabeza hasta posición vertical. Codos con ligera flexión fija. Inhala al bajar, exhala al subir. Carga moderada — el objetivo es el estiramiento y la conexión, no la carga máxima.</div>
-        </div></div>
-      </div>
-
-      <div class="ex-item">
-        <button class="ex-trigger" onclick="toggleEx(this)">
-          <div class="ex-trigger-left">
-            <span class="ex-name">Curl Martillo</span>
-            <span class="ex-note">Agarre neutro · Sin estrés en antebrazo</span>
-          </div>
-          <span class="ex-sr-inline pull">3×12</span>
-          <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="ex-detail"><div class="ex-detail-inner">
-          <div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr pull">3 × 12</div></div>
-          <div class="ex-svg-wrap">
-            <svg viewBox="0 0 280 160" width="280" xmlns="http://www.w3.org/2000/svg">
-              <line x1="20" y1="145" x2="260" y2="145" stroke="#ccc" stroke-width="1.5"/>
-              <!-- Person standing -->
-              <circle cx="140" cy="42" r="12" fill="#333"/>
-              <line x1="140" y1="54" x2="140" y2="105" stroke="#333" stroke-width="8" stroke-linecap="round"/>
-              <line x1="140" y1="105" x2="120" y2="140" stroke="#333" stroke-width="6" stroke-linecap="round"/>
-              <line x1="140" y1="105" x2="160" y2="140" stroke="#333" stroke-width="6" stroke-linecap="round"/>
-              <!-- Left arm down -->
-              <line x1="140" y1="68" x2="108" y2="80" stroke="#333" stroke-width="5" stroke-linecap="round"/>
-              <line x1="108" y1="80" x2="105" y2="108" stroke="#333" stroke-width="5" stroke-linecap="round"/>
-              <!-- Dumbbell down -->
-              <rect x="98" y="107" width="14" height="6" rx="1" fill="#666"/>
-              <ellipse cx="98" cy="110" rx="4" ry="6" fill="#555"/>
-              <ellipse cx="112" cy="110" rx="4" ry="6" fill="#555"/>
-              <!-- Right arm curled -->
-              <line x1="140" y1="68" x2="172" y2="80" stroke="#333" stroke-width="5" stroke-linecap="round"/>
-              <line x1="172" y1="80" x2="168" y2="58" stroke="#333" stroke-width="5" stroke-linecap="round"/>
-              <!-- Dumbbell up - neutral grip -->
-              <rect x="161" y="48" width="14" height="6" rx="1" fill="#666"/>
-              <ellipse cx="161" cy="51" rx="4" ry="6" fill="#555"/>
-              <ellipse cx="175" cy="51" rx="4" ry="6" fill="#555"/>
-              <!-- Arrow -->
-              <path d="M 105 108 Q 90 80 168 58" stroke="#9a7000" stroke-width="2" fill="none" stroke-dasharray="4,3"/>
-              <text x="55" y="85" font-size="11" fill="#9a7000" font-family="sans-serif">Palmas</text>
-              <text x="50" y="98" font-size="11" fill="#9a7000" font-family="sans-serif">enfrentadas</text>
-            </svg>
-          </div>
-          <div class="detail-label">Técnica y Tips</div>
-          <div class="detail-tips">Agarre neutro (palmas enfrentadas) — elimina la supinación que genera estrés en la inserción del antebrazo. Codos fijos a los costados. Bajar 3 seg controlado. Carga conservadora estas dos semanas — el bíceps ya acumula trabajo en todos los remos anteriores.</div>
-        </div></div>
-      </div>
-
-      <div class="ex-item">
-        <button class="ex-trigger" onclick="toggleEx(this)">
-          <div class="ex-trigger-left">
-            <span class="ex-name">Curl en Polea Baja (unilateral)</span>
-            <span class="ex-note">Tensión constante en todo el recorrido</span>
-          </div>
-          <span class="ex-sr-inline pull">2×15 c/lado</span>
-          <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="ex-detail"><div class="ex-detail-inner">
-          <div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr pull">2 × 15 cada lado</div></div>
-          <div class="ex-svg-wrap">
-            <svg viewBox="0 0 280 160" width="280" xmlns="http://www.w3.org/2000/svg">
-              <line x1="20" y1="145" x2="260" y2="145" stroke="#ccc" stroke-width="1.5"/>
-              <rect x="20" y="100" width="16" height="44" rx="2" fill="#bbb"/>
-              <circle cx="28" cy="102" r="6" fill="#999"/>
-              <line x1="28" y1="102" x2="130" y2="95" stroke="#888" stroke-width="1.5" stroke-dasharray="3,2"/>
-              <!-- Person standing -->
-              <circle cx="175" cy="42" r="11" fill="#333"/>
-              <line x1="175" y1="53" x2="175" y2="105" stroke="#333" stroke-width="7" stroke-linecap="round"/>
-              <line x1="175" y1="105" x2="158" y2="140" stroke="#333" stroke-width="5" stroke-linecap="round"/>
-              <line x1="175" y1="105" x2="192" y2="140" stroke="#333" stroke-width="5" stroke-linecap="round"/>
-              <!-- Arm extended pulling from low -->
-              <line x1="175" y1="70" x2="140" y2="85" stroke="#333" stroke-width="4" stroke-linecap="round"/>
-              <line x1="140" y1="85" x2="132" y2="95" stroke="#333" stroke-width="4" stroke-linecap="round"/>
-              <!-- Other arm curled -->
-              <line x1="175" y1="70" x2="200" y2="78" stroke="#333" stroke-width="4" stroke-linecap="round"/>
-              <line x1="200" y1="78" x2="198" y2="55" stroke="#333" stroke-width="4" stroke-linecap="round"/>
-              <!-- Arrow -->
-              <line x1="132" y1="95" x2="198" y2="55" stroke="#9a7000" stroke-width="2" stroke-dasharray="4,3"/>
-              <polyline points="194,60 198,55 200,61" fill="none" stroke="#9a7000" stroke-width="2"/>
-              <text x="205" y="72" font-size="11" fill="#9a7000" font-family="sans-serif">Tensión</text>
-              <text x="200" y="85" font-size="11" fill="#9a7000" font-family="sans-serif">constante</text>
-            </svg>
-          </div>
-          <div class="detail-label">Técnica y Tips</div>
-          <div class="detail-tips">La ventaja de la polea sobre la mancuerna: mantiene tensión en el bíceps incluso en posición extendida. Carga ligera. Agarre neutro si hay molestia en antebrazo. Codo fijo al costado durante todo el movimiento.</div>
-        </div></div>
-      </div>
-
-    </div><!-- ex-list -->
-
-    <div class="s2-diff"><strong>S2 — Progresión:</strong> +1 serie en remo en T y remo unilateral. +5% carga en remo en T si S1 fue cómodo en las últimas reps. Añadir pausa de 2 seg en contracción en el remo unilateral.</div>
-  </div><!-- wcontent w1 -->
-
-  <div class="wcontent" id="pull1-w2">
-    <div class="day-header"><span class="day-badge pull">PULL A</span><span class="day-title-text">Espalda Grosor — Semana 2</span></div>
-    <div class="day-intro">Mismos ejercicios. Progresión aplicada: serie extra en compuestos principales y +5% carga donde S1 fue cómodo.</div>
-    <div class="ex-list">
-      <div class="ex-item priority">
-        <button class="ex-trigger" onclick="toggleEx(this)">
-          <div class="ex-trigger-left"><span class="ex-name">Remo en T</span><span class="badge-prio">PRIORITARIO</span></div>
-          <span class="ex-sr-inline pull">5×12/10/8/6/6</span>
-          <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="ex-detail"><div class="ex-detail-inner">
-          <div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr pull">5 × 12/10/8/6/6</div></div>
-          <div class="detail-label" style="margin-top:12px">Ajuste S2</div>
-          <div class="detail-tips">Serie extra con la misma carga de la última serie de S1. Si en S1 llegaste cómodo al 6º rep: +5% carga en las 3 últimas series. Técnica idéntica.</div>
-        </div></div>
-      </div>
-      <div class="ex-item">
-        <button class="ex-trigger" onclick="toggleEx(this)">
-          <div class="ex-trigger-left"><span class="ex-name">Remo Unilateral</span></div>
-          <span class="ex-sr-inline pull">5×10 c/lado</span>
-          <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="ex-detail"><div class="ex-detail-inner">
-          <div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr pull">5 × 10 cada lado</div></div>
-          <div class="detail-tips">+2 kg por lado si S1 fue controlado. Añadir pausa de 2 seg en contracción máxima esta semana.</div>
-        </div></div>
-      </div>
-      <div class="ex-item">
-        <button class="ex-trigger" onclick="toggleEx(this)">
-          <div class="ex-trigger-left"><span class="ex-name">Remo Polea Agarre Neutro</span></div>
-          <span class="ex-sr-inline pull">4×12</span>
-          <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="ex-detail"><div class="ex-detail-inner">
-          <div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr pull">4 × 12</div></div>
-          <div class="detail-tips">Serie extra. Carga igual. Reducir descanso a 75 seg para mayor densidad.</div>
-        </div></div>
-      </div>
-      <div class="ex-item">
-        <button class="ex-trigger" onclick="toggleEx(this)">
-          <div class="ex-trigger-left"><span class="ex-name">Pullover</span></div>
-          <span class="ex-sr-inline pull">3×12</span>
-          <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="ex-detail"><div class="ex-detail-inner">
-          <div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr pull">3 × 12</div></div>
-          <div class="detail-tips">Sin cambio en series. +2 kg si S1 fue muy controlado.</div>
-        </div></div>
-      </div>
-      <div class="ex-item">
-        <button class="ex-trigger" onclick="toggleEx(this)">
-          <div class="ex-trigger-left"><span class="ex-name">Curl Martillo</span></div>
-          <span class="ex-sr-inline pull">3×12</span>
-          <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="ex-detail"><div class="ex-detail-inner">
-          <div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr pull">3 × 12</div></div>
-          <div class="detail-tips">Sin cambio. Si hay molestia en antebrazo, sustituir por curl en polea agarre neutro.</div>
-        </div></div>
-      </div>
-      <div class="ex-item">
-        <button class="ex-trigger" onclick="toggleEx(this)">
-          <div class="ex-trigger-left"><span class="ex-name">Curl Polea Unilateral</span></div>
-          <span class="ex-sr-inline pull">2×15 c/lado</span>
-          <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="ex-detail"><div class="ex-detail-inner">
-          <div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr pull">2 × 15 cada lado</div></div>
-          <div class="detail-tips">Sin cambio.</div>
-        </div></div>
-      </div>
+        <span class="ex-sr rehab">5×45s c/lado</span>
+        <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="ex-detail"><div class="ex-detail-inner">
+        <div class="detail-row"><div class="detail-label">Protocolo</div><div class="detail-sr rehab">5 series × 45 seg · 60 seg descanso · ambos brazos</div></div>
+        <div class="detail-label">Técnica y Tips</div>
+        <div class="detail-tips">Brazo completamente extendido al frente o al lado del cuerpo. Mancuerna sujetada con <strong>palma hacia abajo (agarre prono)</strong>. Mantener la posición sin dejar caer la muñeca durante 45 segundos. Sin movimiento — es una contracción estática. <strong>El peso debe permitir aguantar los 45 seg completos sin dolor</strong>. Si a los 30 seg tienes que bajar el brazo, el peso es excesivo. Descanso 60 seg entre series. Si es tu primera semana con isométricos, puedes empezar con <strong>3×30 seg</strong> y progresar hacia 5×45 seg conforme lo toleres.</div>
+      </div></div>
     </div>
+
+    <div class="ex-item rehab-mark">
+      <button class="ex-trigger" onclick="toggleEx(this)">
+        <div class="ex-trigger-left">
+          <span class="ex-name">Isométrico Agarre Neutro (pulgar arriba)</span>
+          <span class="badge-rehab">FISIO</span>
+          <span class="ex-note">Brazo extendido · Sostener peso sin movimiento</span>
+        </div>
+        <span class="ex-sr rehab">5×45s c/lado</span>
+        <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="ex-detail"><div class="ex-detail-inner">
+        <div class="detail-row"><div class="detail-label">Protocolo</div><div class="detail-sr rehab">5 series × 45 seg · 60 seg descanso · ambos brazos</div></div>
+        <div class="detail-label">Técnica y Tips</div>
+        <div class="detail-tips">Misma posición pero con <strong>agarre neutro (pulgar hacia arriba, palma mirando al cuerpo)</strong>. La mancuerna queda alineada con el brazo. Este agarre trabaja fibras distintas del complejo flexor-extensor. Mismos parámetros: 45 seg, 5 series, 60 seg descanso, ambos brazos. Progresión gradual desde 3×30 seg si estás empezando.</div>
+      </div></div>
+    </div>
+
+    <div class="ex-item rehab-mark">
+      <button class="ex-trigger" onclick="toggleEx(this)">
+        <div class="ex-trigger-left">
+          <span class="ex-name">Rotación Prono/Supinación con Mancuerna</span>
+          <span class="badge-rehab">FISIO</span>
+          <span class="ex-note">"Abrir cerradura" · Brazo horizontal apoyado</span>
+        </div>
+        <span class="ex-sr rehab">3×15 c/lado</span>
+        <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="ex-detail"><div class="ex-detail-inner">
+        <div class="detail-row"><div class="detail-label">Protocolo</div><div class="detail-sr rehab">3 series × 15 reps · ambos brazos · carga muy ligera</div></div>
+        <div class="detail-label">Técnica y Tips</div>
+        <div class="detail-tips">Sentado con el antebrazo apoyado en una mesa o en tu propio muslo. <strong>Codo fijo a 90° pegado al costado</strong>, no se mueve. Mancuerna ligera (1–2 kg) o un martillo pequeño de casa sujetado por el mango — el peso desplazado del centro del agarre aumenta la resistencia. Rotar la muñeca alternando palma arriba (supinación) y palma abajo (pronación) como si abrieras una cerradura. Movimiento lento y controlado. <strong>El codo y el brazo no rotan</strong> — solo la muñeca y el antebrazo. Si el codo se levanta o se mueve, el ejercicio no cumple su función.</div>
+      </div></div>
+    </div>
+
+    <div class="ex-item">
+      <button class="ex-trigger" onclick="toggleEx(this)">
+        <div class="ex-trigger-left">
+          <span class="ex-name">Progresión Semanal</span>
+          <span class="ex-note">Cómo avanzar sin pasarse</span>
+        </div>
+        <span class="ex-sr rehab">Info</span>
+        <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="ex-detail"><div class="ex-detail-inner">
+        <div class="detail-label">Semana 1</div>
+        <div class="detail-tips">Isométricos: 3 series de 30 seg con peso conservador. Rotaciones: 3×15 con 1 kg. Prioridad: aprender a sentir el trabajo sin dolor.</div>
+        <div class="detail-label" style="margin-top:12px">Semana 2</div>
+        <div class="detail-tips">Isométricos: 4 series de 40 seg mismo peso. Rotaciones: 3×15 con 1–2 kg. Debería empezar a notarse mejoría.</div>
+        <div class="detail-label" style="margin-top:12px">Semana 3</div>
+        <div class="detail-tips">Isométricos: 5×45 seg — protocolo completo. Aumentar peso ligeramente si toleras sin dolor. Rotaciones: 3×15 con 2 kg.</div>
+        <div class="detail-label" style="margin-top:12px">Semana 4</div>
+        <div class="detail-tips">Mantener 5×45 seg con peso incrementado. Rotaciones: subir a martillo pequeño. <strong>Revisión con fisio al final del mes</strong> para pautar la siguiente fase (probablemente introducir excéntricos).</div>
+      </div></div>
+    </div>
+
+  </div>
+
+  <div class="rehab-box"><strong>Suma esto al protocolo:</strong> stretching del flexor (3×30 seg palma arriba tras cada sesión), calor local 10 min antes de entrenar y antes de jugar al golf, colágeno hidrolizado 10–15g + vitamina C 500mg unos 30–60 min antes de los isométricos. Todo compatible con la pauta del fisio.</div>
+</div>
+
+<!-- DÍA 1 -->
+<div class="section" id="d1">
+  <div class="sec-tag rot">Lunes · Día 1 de 4</div>
+  <div class="sec-title">Rotacional + Core</div>
+  <p class="sec-desc">Sesión más específica del plan para el swing. Combina anti-rotación (Pallof) con rotación con carga (wood chops) y core profundo. Todos los ejercicios elegidos por no cargar el flexor del antebrazo.</p>
+
+  <div class="day-header">
+    <span class="day-badge cardio">CARDIO</span>
+    <span class="day-badge rehab">REHAB</span>
+    <span class="day-badge rot">ROTACIONAL</span>
+    <span class="day-title-text">75–90 min total</span>
+  </div>
+
+  <div class="block-header">
+    <span class="block-num">01</span>
+    <span class="block-title cardio">Cardio LISS</span>
+    <span class="block-time">30 min</span>
+  </div>
+  <div class="day-intro">Bici estática o caminar en cinta con inclinación 8–12% a 5–6 km/h. FC 65–70% máx (≈130–140 ppm). Agarre completamente relajado en la bici o sin apoyarse en las barras de la cinta. Calienta el sistema para lo que viene.</div>
+
+  <div class="block-header">
+    <span class="block-num">02</span>
+    <span class="block-title rehab">Rehab Fisio</span>
+    <span class="block-time">15 min</span>
+  </div>
+  <div class="day-intro">Isométrico prono 5×45 seg + isométrico neutro 5×45 seg + rotaciones prono/supinación 3×15. Ambos brazos. Ver "Rehab Fisio" para protocolo detallado y progresión semanal.</div>
+
+  <div class="block-header">
+    <span class="block-num">03</span>
+    <span class="block-title main">Trabajo Específico Rotacional</span>
+    <span class="block-time">40 min</span>
+  </div>
+
+  <div class="ex-list">
+
+    <div class="ex-item priority">
+      <button class="ex-trigger" onclick="toggleEx(this)">
+        <div class="ex-trigger-left">
+          <span class="ex-name">Pallof Press en Polea</span>
+          <span class="badge-prio">FUNDAMENTAL</span>
+          <span class="ex-note">Anti-rotación · Sin carga al antebrazo</span>
+        </div>
+        <span class="ex-sr rot">4×12 c/lado</span>
+        <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="ex-detail"><div class="ex-detail-inner">
+        <div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr rot">4 × 12 cada lado</div></div>
+        <div class="detail-label">Técnica y Tips</div>
+        <div class="detail-tips">De pie de lado a polea media. Agarrar cuerda con ambas manos contra el pecho. Extender brazos al frente sin que el torso rote. Mantener 2 seg extendidos, volver al pecho. <strong>Es el ejercicio más importante para golf</strong> — el core antirrotador es la base sobre la que ocurre el swing. La cuerda no requiere agarre fuerte del antebrazo. Si notas cualquier molestia en el codo al apretar la cuerda, envolver las manos alrededor sin cerrar el puño.</div>
+      </div></div>
+    </div>
+
+    <div class="ex-item priority">
+      <button class="ex-trigger" onclick="toggleEx(this)">
+        <div class="ex-trigger-left">
+          <span class="ex-name">Cable Wood Chop (alto a bajo)</span>
+          <span class="badge-golf">PATRÓN DE SWING</span>
+          <span class="ex-note">Imita el downswing</span>
+        </div>
+        <span class="ex-sr rot">3×10 c/lado</span>
+        <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="ex-detail"><div class="ex-detail-inner">
+        <div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr rot">3 × 10 cada lado</div></div>
+        <div class="detail-label">Técnica y Tips</div>
+        <div class="detail-tips">De pie de lado a polea alta. Ambas manos en la cuerda. Bajar diagonal cruzando el cuerpo hasta la cadera contraria. <strong>La rotación viene de la cadera, no de los brazos</strong>. Carga moderada — es patrón motor, no fuerza máxima. Si notas tirón en antebrazo al frenar la carga al final del recorrido, reduce peso.</div>
+      </div></div>
+    </div>
+
+    <div class="ex-item">
+      <button class="ex-trigger" onclick="toggleEx(this)">
+        <div class="ex-trigger-left">
+          <span class="ex-name">Cable Wood Chop (bajo a alto)</span>
+          <span class="badge-golf">PATRÓN DE SWING</span>
+          <span class="ex-note">Imita el follow-through</span>
+        </div>
+        <span class="ex-sr rot">3×10 c/lado</span>
+        <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="ex-detail"><div class="ex-detail-inner">
+        <div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr rot">3 × 10 cada lado</div></div>
+        <div class="detail-label">Técnica y Tips</div>
+        <div class="detail-tips">Inverso al anterior. Polea baja. Llevar de cadera baja a hombro contrario. Imita el follow-through del swing. Mismos principios: caderas y torso, brazos acompañan.</div>
+      </div></div>
+    </div>
+
+    <div class="ex-item">
+      <button class="ex-trigger" onclick="toggleEx(this)">
+        <div class="ex-trigger-left">
+          <span class="ex-name">Lanzamiento Medicine Ball Lateral</span>
+          <span class="badge-golf">VELOCIDAD ROTACIONAL</span>
+          <span class="ex-note">Si tienes balón medicinal y pared</span>
+        </div>
+        <span class="ex-sr rot">4×6 c/lado</span>
+        <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="ex-detail"><div class="ex-detail-inner">
+        <div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr rot">4 × 6 cada lado</div></div>
+        <div class="detail-label">Técnica y Tips</div>
+        <div class="detail-tips">Balón 4–6 kg. De lado a pared. Rotar caderas, transferir al torso, lanzar contra la pared con máxima velocidad. Capturar suavemente sin absorber impacto con las muñecas — dejar que el balón entre en el cuerpo. <strong>Si el impacto de la captura molesta al codo, saltar este ejercicio</strong> y hacer Russian Twist en su lugar.</div>
+      </div></div>
+    </div>
+
+    <div class="ex-item">
+      <button class="ex-trigger" onclick="toggleEx(this)">
+        <div class="ex-trigger-left">
+          <span class="ex-name">Russian Twist con Peso</span>
+          <span class="ex-note">Rotación con velocidad</span>
+        </div>
+        <span class="ex-sr rot">3×20</span>
+        <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="ex-detail"><div class="ex-detail-inner">
+        <div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr rot">3 × 20 (10 cada lado)</div></div>
+        <div class="detail-label">Técnica y Tips</div>
+        <div class="detail-tips">Sentado, pies en el aire. Rotar el peso de lado a lado. Velocidad media-alta. Carga moderada. Balón medicinal o disco sujetado sin apretar — palmas abiertas debajo mejor que agarre firme.</div>
+      </div></div>
+    </div>
+
+    <div class="ex-item">
+      <button class="ex-trigger" onclick="toggleEx(this)">
+        <div class="ex-trigger-left">
+          <span class="ex-name">Side Plank con Rotación</span>
+          <span class="ex-note">Estabilidad lateral</span>
+        </div>
+        <span class="ex-sr rot">3×10 c/lado</span>
+        <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="ex-detail"><div class="ex-detail-inner">
+        <div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr rot">3 × 10 cada lado</div></div>
+        <div class="detail-label">Técnica y Tips</div>
+        <div class="detail-tips">Plank lateral apoyado en <strong>antebrazo (no en mano)</strong> para descargar la muñeca. Brazo libre al techo. Llevar por debajo del cuerpo y volver. Cuerpo recto.</div>
+      </div></div>
+    </div>
+
+    <div class="ex-item">
+      <button class="ex-trigger" onclick="toggleEx(this)">
+        <div class="ex-trigger-left">
+          <span class="ex-name">Dead Bug</span>
+          <span class="ex-note">Core profundo</span>
+        </div>
+        <span class="ex-sr rot">3×12 c/lado</span>
+        <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="ex-detail"><div class="ex-detail-inner">
+        <div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr rot">3 × 12 cada lado</div></div>
+        <div class="detail-label">Técnica y Tips</div>
+        <div class="detail-tips">Tumbado boca arriba, brazos al techo, piernas 90°. Bajar brazo derecho y pierna izquierda simultáneamente sin despegar la lumbar. Activa el transverso del abdomen — estabilizador clave del swing.</div>
+      </div></div>
+    </div>
+
   </div>
 </div>
 
-<!-- PUSH A -->
-<div class="section" id="push1">
-  <div class="sec-tag push">Martes · Sesión 2 de 5</div>
-  <div class="sec-title">Push A — Volumen de Pecho</div>
-  <p class="sec-desc">Pecho como protagonista. Mancuernas como herramienta principal. Mayor rango de movimiento que la barra, menor compresión articular.</p>
-  <div class="wtabs">
-    <button class="wtab active" onclick="showWeek('push1',1)">Semana 1</button>
-    <button class="wtab" onclick="showWeek('push1',2)">Semana 2</button>
-  </div>
-  <div class="wcontent active" id="push1-w1">
-    <div class="day-header"><span class="day-badge push">PUSH A</span><span class="day-title-text">Pecho Volumen + Tríceps</span></div>
-    <div class="day-intro">Calienta el hombro anterior: 2 series de rotación externa con banda elástica o cuerda en polea antes de empezar. Codos a 45° en todos los press — nunca en cruz.</div>
-    <div class="ex-list">
+<!-- DÍA 2 -->
+<div class="section" id="d2">
+  <div class="sec-tag legs">Martes · Día 2 de 4</div>
+  <div class="sec-title">Piernas — Potencia y Base del Swing</div>
+  <p class="sec-desc">El swing empieza en el suelo. Cuanta más fuerza generen las piernas contra el suelo, más velocidad llega al palo. La pierna no compromete el antebrazo, así que aquí podemos trabajar con relativa intensidad.</p>
 
-      <div class="ex-item priority">
-        <button class="ex-trigger" onclick="toggleEx(this)">
-          <div class="ex-trigger-left"><span class="ex-name">Press Banco Plano Mancuernas</span><span class="badge-prio">PRINCIPAL</span></div>
-          <span class="ex-sr-inline push">4×10/8/8/6</span>
-          <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="ex-detail"><div class="ex-detail-inner">
-          <div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr push">4 × 10 / 8 / 8 / 6</div></div>
-          <div class="ex-svg-wrap">
-            <svg viewBox="0 0 280 160" width="280" xmlns="http://www.w3.org/2000/svg">
-              <line x1="20" y1="145" x2="260" y2="145" stroke="#ccc" stroke-width="1.5"/>
-              <rect x="60" y="95" width="160" height="14" rx="3" fill="#bbb"/>
-              <line x1="70" y1="109" x2="70" y2="130" stroke="#999" stroke-width="4"/>
-              <line x1="210" y1="109" x2="210" y2="130" stroke="#999" stroke-width="4"/>
-              <!-- Person -->
-              <ellipse cx="140" cy="93" rx="55" ry="9" fill="#444"/>
-              <circle cx="82" cy="87" r="10" fill="#333"/>
-              <!-- Arms pressing up -->
-              <line x1="120" y1="90" x2="100" y2="70" stroke="#333" stroke-width="4" stroke-linecap="round"/>
-              <line x1="160" y1="90" x2="180" y2="70" stroke="#333" stroke-width="4" stroke-linecap="round"/>
-              <!-- Dumbbells up -->
-              <rect x="88" y="62" width="20" height="8" rx="2" fill="#666"/>
-              <ellipse cx="88" cy="66" rx="5" ry="7" fill="#555"/>
-              <ellipse cx="108" cy="66" rx="5" ry="7" fill="#555"/>
-              <rect x="172" y="62" width="20" height="8" rx="2" fill="#666"/>
-              <ellipse cx="172" cy="66" rx="5" ry="7" fill="#555"/>
-              <ellipse cx="192" cy="66" rx="5" ry="7" fill="#555"/>
-              <!-- 45 degree angle indicator -->
-              <line x1="120" y1="90" x2="120" y2="62" stroke="#c8401a" stroke-width="1" stroke-dasharray="3,2"/>
-              <text x="88" y="125" font-size="10" fill="#c8401a" font-family="sans-serif">Codos 45°</text>
-              <!-- Arrow down showing lower position -->
-              <line x1="98" y1="70" x2="108" y2="88" stroke="#c8401a" stroke-width="2" stroke-dasharray="3,2"/>
-              <text x="195" y="78" font-size="10" fill="#c8401a" font-family="sans-serif">No más</text>
-              <text x="195" y="90" font-size="10" fill="#c8401a" font-family="sans-serif">abajo del banco</text>
-            </svg>
-          </div>
-          <div class="detail-label">Técnica y Tips</div>
-          <div class="detail-tips">Escápulas retraídas y deprimidas durante todo el movimiento. Codos a 45° — nunca perpendiculares al torso. Bajar hasta que el codo esté a la altura del banco, no más. 2 seg de bajada, explosivo arriba. Pausa 1 seg en contracción arriba. Pirámide ascendente de carga.</div>
-        </div></div>
-      </div>
-
-      <div class="ex-item">
-        <button class="ex-trigger" onclick="toggleEx(this)">
-          <div class="ex-trigger-left"><span class="ex-name">Press Inclinado Mancuernas (30°)</span><span class="ex-note">Pectoral superior · Banco a 30°, no 45°</span></div>
-          <span class="ex-sr-inline push">3×10</span>
-          <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="ex-detail"><div class="ex-detail-inner">
-          <div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr push">3 × 10</div></div>
-          <div class="ex-svg-wrap">
-            <svg viewBox="0 0 280 160" width="280" xmlns="http://www.w3.org/2000/svg">
-              <line x1="20" y1="145" x2="260" y2="145" stroke="#ccc" stroke-width="1.5"/>
-              <!-- Inclined bench -->
-              <line x1="60" y1="135" x2="200" y2="135" stroke="#bbb" stroke-width="3"/>
-              <line x1="60" y1="135" x2="80" y2="95" stroke="#bbb" stroke-width="8" stroke-linecap="round"/>
-              <line x1="200" y1="135" x2="200" y2="120" stroke="#999" stroke-width="4"/>
-              <!-- Person inclined -->
-              <ellipse cx="130" cy="102" rx="55" ry="10" fill="#444" transform="rotate(-20,130,102)"/>
-              <circle cx="80" cy="82" r="10" fill="#333"/>
-              <!-- Arms -->
-              <line x1="110" y1="96" x2="90" y2="76" stroke="#333" stroke-width="4" stroke-linecap="round"/>
-              <line x1="150" y1="100" x2="165" y2="78" stroke="#333" stroke-width="4" stroke-linecap="round"/>
-              <rect x="78" y="68" width="18" height="7" rx="1" fill="#666"/>
-              <ellipse cx="78" cy="72" rx="4" ry="6" fill="#555"/>
-              <ellipse cx="96" cy="72" rx="4" ry="6" fill="#555"/>
-              <rect x="155" y="70" width="18" height="7" rx="1" fill="#666"/>
-              <ellipse cx="155" cy="74" rx="4" ry="6" fill="#555"/>
-              <ellipse cx="173" cy="74" rx="4" ry="6" fill="#555"/>
-              <text x="195" y="88" font-size="11" fill="#c8401a" font-family="sans-serif">30°</text>
-              <text x="185" y="102" font-size="10" fill="#888" font-family="sans-serif">no 45°</text>
-            </svg>
-          </div>
-          <div class="detail-label">Técnica y Tips</div>
-          <div class="detail-tips">30° activa pectoral superior con menos deltoides anterior que 45°. A 45° empieza a dominar el hombro. Misma mecánica que banco plano. Carga inferior al plano. El pectoral superior define visualmente el pecho más que cualquier otra porción.</div>
-        </div></div>
-      </div>
-
-      <div class="ex-item">
-        <button class="ex-trigger" onclick="toggleEx(this)">
-          <div class="ex-trigger-left"><span class="ex-name">Aperturas en Polea / Peck Deck</span><span class="ex-note">Tensión constante · Aislamiento</span></div>
-          <span class="ex-sr-inline push">3×14</span>
-          <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="ex-detail"><div class="ex-detail-inner">
-          <div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr push">3 × 14</div></div>
-          <div class="ex-svg-wrap">
-            <svg viewBox="0 0 280 160" width="280" xmlns="http://www.w3.org/2000/svg">
-              <line x1="20" y1="145" x2="260" y2="145" stroke="#ccc" stroke-width="1.5"/>
-              <!-- Cables from sides -->
-              <circle cx="25" cy="85" r="7" fill="#aaa"/>
-              <circle cx="255" cy="85" r="7" fill="#aaa"/>
-              <line x1="25" y1="85" x2="108" y2="98" stroke="#888" stroke-width="1.5" stroke-dasharray="3,2"/>
-              <line x1="255" y1="85" x2="172" y2="98" stroke="#888" stroke-width="1.5" stroke-dasharray="3,2"/>
-              <!-- Person standing -->
-              <circle cx="140" cy="48" r="11" fill="#333"/>
-              <line x1="140" y1="59" x2="140" y2="108" stroke="#333" stroke-width="8" stroke-linecap="round"/>
-              <line x1="140" y1="108" x2="122" y2="140" stroke="#333" stroke-width="5" stroke-linecap="round"/>
-              <line x1="140" y1="108" x2="158" y2="140" stroke="#333" stroke-width="5" stroke-linecap="round"/>
-              <!-- Arms open -->
-              <line x1="140" y1="72" x2="108" y2="88" stroke="#333" stroke-width="5" stroke-linecap="round"/>
-              <line x1="140" y1="72" x2="172" y2="88" stroke="#333" stroke-width="5" stroke-linecap="round"/>
-              <!-- Arms closed (ghost) -->
-              <line x1="140" y1="72" x2="128" y2="90" stroke="#c8401a" stroke-width="2" stroke-dasharray="3,2"/>
-              <line x1="140" y1="72" x2="152" y2="90" stroke="#c8401a" stroke-width="2" stroke-dasharray="3,2"/>
-              <!-- Arrow -->
-              <path d="M 108 88 Q 140 110 172 88" stroke="#c8401a" stroke-width="2" fill="none" stroke-dasharray="4,3"/>
-              <text x="115" y="130" font-size="11" fill="#c8401a" font-family="sans-serif">Movimiento de abrazo</text>
-            </svg>
-          </div>
-          <div class="detail-label">Técnica y Tips</div>
-          <div class="detail-tips">La polea mantiene tensión en el pectoral en todo el recorrido, a diferencia de la mancuerna que pierde tensión arriba. Movimiento de abrazo — no de aleteo. Contracción máxima en el cruce. Coda ligeramente flexionado y fijo. Carga ligera — es aislamiento puro.</div>
-        </div></div>
-      </div>
-
-      <div class="ex-item">
-        <button class="ex-trigger" onclick="toggleEx(this)">
-          <div class="ex-trigger-left"><span class="ex-name">Fondos en Paralelas</span><span class="ex-note">Torso inclinado = más pectoral</span></div>
-          <span class="ex-sr-inline push">3×10</span>
-          <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="ex-detail"><div class="ex-detail-inner">
-          <div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr push">3 × 10</div></div>
-          <div class="detail-label" style="margin-top:12px">Técnica y Tips</div>
-          <div class="detail-tips">Torso inclinado ligeramente hacia delante para activar más pectoral que tríceps. Bajar hasta 90° de codo. Para añadir dificultad: cinturón con disco. Si el hombro molesta, sustituir por press en máquina convergente.</div>
-        </div></div>
-      </div>
-
-      <div class="ex-item">
-        <button class="ex-trigger" onclick="toggleEx(this)">
-          <div class="ex-trigger-left"><span class="ex-name">Extensión Tríceps en Polea (cuerda)</span></div>
-          <span class="ex-sr-inline push">3×12</span>
-          <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="ex-detail"><div class="ex-detail-inner">
-          <div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr push">3 × 12</div></div>
-          <div class="detail-label" style="margin-top:12px">Técnica y Tips</div>
-          <div class="detail-tips">Codos fijos a los costados — son el eje, no se mueven. Separar las manos hacia afuera al final del movimiento para máxima contracción de la cabeza lateral del tríceps. Codo nunca por encima de la polea.</div>
-        </div></div>
-      </div>
-
-      <div class="ex-item">
-        <button class="ex-trigger" onclick="toggleEx(this)">
-          <div class="ex-trigger-left"><span class="ex-name">Press Francés con Mancuernas</span><span class="ex-note">Cabeza larga del tríceps</span></div>
-          <span class="ex-sr-inline push">3×10</span>
-          <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="ex-detail"><div class="ex-detail-inner">
-          <div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr push">3 × 10</div></div>
-          <div class="detail-label" style="margin-top:12px">Técnica y Tips</div>
-          <div class="detail-tips">Tumbado. Bajar mancuernas a los lados de la cabeza — no detrás. Codos apuntando al techo, no abiertos hacia los lados. Trabaja la cabeza larga del tríceps en su posición de máximo estiramiento. Carga moderada.</div>
-        </div></div>
-      </div>
-
-    </div>
-    <div class="s2-diff"><strong>S2:</strong> Superserie en los dos últimos ejercicios de pecho (aperturas + fondos sin descanso, 3 rondas). +2 kg/mancuerna en press plano e inclinado. Serie extra en press plano (5 series).</div>
+  <div class="day-header">
+    <span class="day-badge cardio">CARDIO</span>
+    <span class="day-badge rehab">REHAB</span>
+    <span class="day-badge legs">PIERNAS</span>
+    <span class="day-title-text">75–90 min total</span>
   </div>
 
-  <div class="wcontent" id="push1-w2">
-    <div class="day-header"><span class="day-badge push">PUSH A</span><span class="day-title-text">Pecho Volumen — Semana 2</span></div>
-    <div class="day-intro">Superserie en aperturas + fondos. Incremento de carga en press principales.</div>
-    <div class="ex-list">
-      <div class="ex-item priority"><button class="ex-trigger" onclick="toggleEx(this)"><div class="ex-trigger-left"><span class="ex-name">Press Banco Plano Mancuernas</span><span class="badge-prio">PRINCIPAL</span></div><span class="ex-sr-inline push">5×10/8/8/6/6</span><svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="ex-detail"><div class="ex-detail-inner"><div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr push">5 × 10/8/8/6/6</div></div><div class="detail-tips">Serie extra. +2 kg por mancuerna en las 3 últimas series si S1 fue controlado.</div></div></div></div>
-      <div class="ex-item"><button class="ex-trigger" onclick="toggleEx(this)"><div class="ex-trigger-left"><span class="ex-name">Press Inclinado (30°)</span></div><span class="ex-sr-inline push">4×10</span><svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="ex-detail"><div class="ex-detail-inner"><div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr push">4 × 10</div></div><div class="detail-tips">Serie extra. +2 kg si S1 cómodo.</div></div></div></div>
-      <div class="ex-item"><button class="ex-trigger" onclick="toggleEx(this)"><div class="ex-trigger-left"><span class="ex-name">Aperturas + Fondos (superserie)</span><span class="ex-note">Sin descanso entre ejercicios · 90 seg entre rondas</span></div><span class="ex-sr-inline push">3 rondas</span><svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="ex-detail"><div class="ex-detail-inner"><div class="detail-row"><div class="detail-label">Protocolo</div><div class="detail-sr push">12 aperturas + 10 fondos × 3</div></div><div class="detail-tips">Sin descanso entre aperturas y fondos. 90 seg entre rondas. Alta fatiga local del pectoral.</div></div></div></div>
-      <div class="ex-item"><button class="ex-trigger" onclick="toggleEx(this)"><div class="ex-trigger-left"><span class="ex-name">Extensión Tríceps Polea</span></div><span class="ex-sr-inline push">4×12</span><svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="ex-detail"><div class="ex-detail-inner"><div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr push">4 × 12</div></div><div class="detail-tips">Serie extra. +2.5 kg si S1 cómodo.</div></div></div></div>
-      <div class="ex-item"><button class="ex-trigger" onclick="toggleEx(this)"><div class="ex-trigger-left"><span class="ex-name">Press Francés Mancuernas</span></div><span class="ex-sr-inline push">3×10</span><svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="ex-detail"><div class="ex-detail-inner"><div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr push">3 × 10</div></div><div class="detail-tips">+2 kg si S1 cómodo.</div></div></div></div>
+  <div class="block-header">
+    <span class="block-num">01</span>
+    <span class="block-title cardio">Cardio HIIT</span>
+    <span class="block-time">30 min</span>
+  </div>
+  <div class="day-intro">Bici estática. 8 min calentamiento + 10 rondas de 30 seg sprint / 90 seg suave + 4 min vuelta a la calma. FC sprint ≥85%. La bici es la mejor opción por el agarre neutro que no carga el codo.</div>
+
+  <div class="block-header">
+    <span class="block-num">02</span>
+    <span class="block-title rehab">Rehab Fisio</span>
+    <span class="block-time">15 min</span>
+  </div>
+  <div class="day-intro">Isométrico prono 5×45 seg + isométrico neutro 5×45 seg + rotaciones prono/supinación 3×15. Ambos brazos.</div>
+
+  <div class="block-header">
+    <span class="block-num">03</span>
+    <span class="block-title main">Piernas Potencia</span>
+    <span class="block-time">40 min</span>
+  </div>
+
+  <div class="ex-list">
+
+    <div class="ex-item priority">
+      <button class="ex-trigger" onclick="toggleEx(this)">
+        <div class="ex-trigger-left">
+          <span class="ex-name">Saltos Verticales (Jump Squats)</span>
+          <span class="badge-prio">POTENCIA</span>
+          <span class="ex-note">Sin peso · Explosividad pura</span>
+        </div>
+        <span class="ex-sr legs">4×6</span>
+        <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="ex-detail"><div class="ex-detail-inner">
+        <div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr legs">4 × 6</div></div>
+        <div class="detail-label">Técnica y Tips</div>
+        <div class="detail-tips">Sin peso. Sentadilla rápida hasta paralelo, salto vertical máximo, aterrizaje amortiguado. <strong>Descanso 90 seg entre series</strong> — la potencia requiere recuperación completa. La fuerza explosiva del tren inferior se traduce directamente en velocidad de palo.</div>
+      </div></div>
     </div>
+
+    <div class="ex-item priority">
+      <button class="ex-trigger" onclick="toggleEx(this)">
+        <div class="ex-trigger-left">
+          <span class="ex-name">Kettlebell Swing (con correas si posible)</span>
+          <span class="badge-prio">POTENCIA DE CADERA</span>
+          <span class="ex-note">Ejercicio rey · Cuidado con agarre</span>
+        </div>
+        <span class="ex-sr legs">4×15</span>
+        <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="ex-detail"><div class="ex-detail-inner">
+        <div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr legs">4 × 15</div></div>
+        <div class="detail-label">Técnica y Tips</div>
+        <div class="detail-tips">Kettlebell 12–20 kg (más ligero de lo habitual para proteger antebrazo). Bisagra de cadera, proyectar la kettlebell con potencia de cadera. <strong>Si el agarre continuado molesta al codo, sustituir por Hip Thrust con disco</strong> — mismo objetivo (potencia de cadera) sin agarre. Kettlebell alternativa: usar correas si tienes.</div>
+      </div></div>
+    </div>
+
+    <div class="ex-item">
+      <button class="ex-trigger" onclick="toggleEx(this)">
+        <div class="ex-trigger-left">
+          <span class="ex-name">Prensa de Piernas</span>
+          <span class="ex-note">Sin agarre activo · Máquina</span>
+        </div>
+        <span class="ex-sr legs">4×12</span>
+        <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="ex-detail"><div class="ex-detail-inner">
+        <div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr legs">4 × 12</div></div>
+        <div class="detail-label">Técnica y Tips</div>
+        <div class="detail-tips">Pies a anchura de hombros, altura media. Bajar a 90° sin despegar la espalda. No bloquear rodillas. Las asas de la prensa no requieren apretar — apoyar las manos sin hacer fuerza.</div>
+      </div></div>
+    </div>
+
+    <div class="ex-item">
+      <button class="ex-trigger" onclick="toggleEx(this)">
+        <div class="ex-trigger-left">
+          <span class="ex-name">Hip Thrust con Disco</span>
+          <span class="ex-note">Glúteo · Sin agarre exigente</span>
+        </div>
+        <span class="ex-sr legs">4×12</span>
+        <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="ex-detail"><div class="ex-detail-inner">
+        <div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr legs">4 × 12</div></div>
+        <div class="detail-label">Técnica y Tips</div>
+        <div class="detail-tips">Escápulas en banco, disco sobre la pelvis (con almohadilla). El disco solo requiere apoyo, no agarre. <strong>El glúteo es el motor más potente del swing</strong>. Pausa 1 seg arriba con contracción máxima.</div>
+      </div></div>
+    </div>
+
+    <div class="ex-item">
+      <button class="ex-trigger" onclick="toggleEx(this)">
+        <div class="ex-trigger-left">
+          <span class="ex-name">Sentadilla Búlgara con Mancuerna</span>
+          <span class="ex-note">Unilateral · Una sola mancuerna</span>
+        </div>
+        <span class="ex-sr legs">3×10 c/lado</span>
+        <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="ex-detail"><div class="ex-detail-inner">
+        <div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr legs">3 × 10 cada lado</div></div>
+        <div class="detail-label">Técnica y Tips</div>
+        <div class="detail-tips">Pie trasero en banco. Sentadilla profunda con la pierna delantera. <strong>Una sola mancuerna en la mano del brazo sano</strong>, la otra mano se apoya suavemente en máquina o pared para equilibrio. Alterna brazos entre serie y serie para no sobrecargar el sano. El trabajo unilateral es muy importante para golf.</div>
+      </div></div>
+    </div>
+
+    <div class="ex-item">
+      <button class="ex-trigger" onclick="toggleEx(this)">
+        <div class="ex-trigger-left">
+          <span class="ex-name">Curl Femoral en Máquina</span>
+          <span class="ex-note">Isquios · Aislamiento</span>
+        </div>
+        <span class="ex-sr legs">3×15</span>
+        <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="ex-detail"><div class="ex-detail-inner">
+        <div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr legs">3 × 15</div></div>
+        <div class="detail-label">Técnica y Tips</div>
+        <div class="detail-tips">Máquina en vez de peso muerto rumano — evita cualquier agarre. Caderas pegadas al acolchado. Subir explosivo, bajar 3 seg.</div>
+      </div></div>
+    </div>
+
+    <div class="ex-item">
+      <button class="ex-trigger" onclick="toggleEx(this)">
+        <div class="ex-trigger-left">
+          <span class="ex-name">Abducción de Cadera en Máquina</span>
+          <span class="ex-note">Glúteo medio · Estabilidad</span>
+        </div>
+        <span class="ex-sr legs">3×15</span>
+        <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="ex-detail"><div class="ex-detail-inner">
+        <div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr legs">3 × 15</div></div>
+        <div class="detail-label">Técnica y Tips</div>
+        <div class="detail-tips">El glúteo medio estabiliza la cadera durante el swing. Pausa 1 seg en contracción. Inclinarse ligeramente hacia delante aumenta el rango.</div>
+      </div></div>
+    </div>
+
   </div>
 </div>
 
-<!-- LEGS -->
-<div class="section" id="legs">
-  <div class="sec-tag legs">Miércoles · Sesión 3 de 5</div>
-  <div class="sec-title">Legs — Piernas + Core</div>
-  <p class="sec-desc">Mayor gasto calórico y mayor liberación de GH y testosterona por sesión. Sin barra — prensa, mancuernas y máquinas.</p>
-  <div class="wtabs">
-    <button class="wtab active" onclick="showWeek('legs',1)">Semana 1</button>
-    <button class="wtab" onclick="showWeek('legs',2)">Semana 2</button>
+<!-- DÍA 3 -->
+<div class="section" id="d3">
+  <div class="sec-tag upper">Jueves · Día 3 de 4</div>
+  <div class="sec-title">Torso — Mantenimiento con Codo Protegido</div>
+  <p class="sec-desc">Sesión de mantenimiento del tren superior. Todo con máquinas o con agarre neutro/correas para minimizar la carga en el flexor. El objetivo no es progresar en cargas — es mantener la musculatura mientras el codo se recupera.</p>
+
+  <div class="day-header">
+    <span class="day-badge cardio">CARDIO</span>
+    <span class="day-badge rehab">REHAB</span>
+    <span class="day-badge upper">TORSO</span>
+    <span class="day-title-text">75–90 min total</span>
   </div>
-  <div class="wcontent active" id="legs-w1">
-    <div class="day-header"><span class="day-badge legs">LEGS</span><span class="day-title-text">Piernas + Core</span></div>
-    <div class="day-intro">Calentamiento: 5 min bici estática moderada + 2 series de extensión de cuádriceps al 40%.</div>
-    <div class="ex-list">
-      <div class="ex-item priority"><button class="ex-trigger" onclick="toggleEx(this)"><div class="ex-trigger-left"><span class="ex-name">Prensa de Piernas</span><span class="badge-prio">PRINCIPAL</span></div><span class="ex-sr-inline legs">4×12/10/8/6</span><svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="ex-detail"><div class="ex-detail-inner"><div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr legs">4 × 12/10/8/6</div></div><div class="detail-tips">Pies a anchura de hombros, altura media de la plataforma. Bajar a 90° sin que la espalda baja se despegue del respaldo. No bloquear rodillas arriba. Última serie al fallo técnico. Pirámide ascendente. Descanso 2 min entre series.</div></div></div></div>
-      <div class="ex-item"><button class="ex-trigger" onclick="toggleEx(this)"><div class="ex-trigger-left"><span class="ex-name">Sentadilla Goblet con Mancuerna</span></div><span class="ex-sr-inline legs">3×12</span><svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="ex-detail"><div class="ex-detail-inner"><div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr legs">3 × 12</div></div><div class="detail-tips">Mancuerna vertical frente al pecho. Pies ligeramente más abiertos que hombros, punta hacia afuera. Baja por debajo del paralelo si la movilidad lo permite. Talones en el suelo todo el recorrido. Pecho arriba.</div></div></div></div>
-      <div class="ex-item"><button class="ex-trigger" onclick="toggleEx(this)"><div class="ex-trigger-left"><span class="ex-name">Extensión de Cuádriceps en Máquina</span></div><span class="ex-sr-inline legs">3×15</span><svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="ex-detail"><div class="ex-detail-inner"><div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr legs">3 × 15</div></div><div class="detail-tips">Pausa 2 seg en contracción máxima. Excéntrico 3 seg. Ajustar el eje de la máquina con la rodilla. No carga tan alta que pierdas el control en la bajada.</div></div></div></div>
-      <div class="ex-item"><button class="ex-trigger" onclick="toggleEx(this)"><div class="ex-trigger-left"><span class="ex-name">Peso Muerto Rumano con Mancuernas</span><span class="ex-note">Espalda neutra obligatoria</span></div><span class="ex-sr-inline legs">4×10</span><svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="ex-detail"><div class="ex-detail-inner"><div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr legs">4 × 10</div></div><div class="detail-tips">Mancuernas pegadas a los muslos. Para cuando sientas el tirón en isquios — no más abajo si la espalda redondea. Para la mayoría: hasta tibia media. Este ejercicio tiene el mayor potencial de lesión si se ejecuta con mala técnica.</div></div></div></div>
-      <div class="ex-item"><button class="ex-trigger" onclick="toggleEx(this)"><div class="ex-trigger-left"><span class="ex-name">Curl Femoral Tumbado</span></div><span class="ex-sr-inline legs">3×12</span><svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="ex-detail"><div class="ex-detail-inner"><div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr legs">3 × 12</div></div><div class="detail-tips">Caderas pegadas al acolchado. Subir explosivo, bajar 3 seg. Los isquios responden muy bien al trabajo excéntrico lento.</div></div></div></div>
-      <div class="ex-item"><button class="ex-trigger" onclick="toggleEx(this)"><div class="ex-trigger-left"><span class="ex-name">Elevación de Gemelos de Pie</span></div><span class="ex-sr-inline legs">4×20</span><svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="ex-detail"><div class="ex-detail-inner"><div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr legs">4 × 20</div></div><div class="detail-tips">Máximo rango: talón abajo en descenso, máxima extensión de tobillo arriba. Pausa 2 seg en contracción. Alto volumen y tempo lento para el gemelo.</div></div></div></div>
-      <div class="ex-item"><button class="ex-trigger" onclick="toggleEx(this)"><div class="ex-trigger-left"><span class="ex-name">Elevación de Piernas en Barra</span><span class="ex-note">Core</span></div><span class="ex-sr-inline core">3×12</span><svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="ex-detail"><div class="ex-detail-inner"><div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr core">3 × 12</div></div><div class="detail-tips">Sin balanceo del cuerpo. Retroversión pélvica al subir. Si no llegas a 90° sin redondear la zona lumbar, trabaja con rodillas flexionadas primero.</div></div></div></div>
-      <div class="ex-item"><button class="ex-trigger" onclick="toggleEx(this)"><div class="ex-trigger-left"><span class="ex-name">Hiperextensiones con Disco</span><span class="ex-note">Lumbar · Core posterior</span></div><span class="ex-sr-inline core">3×15</span><svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="ex-detail"><div class="ex-detail-inner"><div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr core">3 × 15</div></div><div class="detail-tips">Disco 5–10 kg en pecho. Sube hasta la línea del cuerpo — no hiperextender. Crítico para el equilibrio lumbar/abdominal y para compensar la jornada sedentaria.</div></div></div></div>
-    </div>
-    <div class="s2-diff"><strong>S2:</strong> Añadir zancadas caminando 3×12 pasos/lado como finalizador. +10 kg en prensa. +4 kg en peso muerto rumano. Excéntrico 4 seg en curl femoral.</div>
+
+  <div class="block-header">
+    <span class="block-num">01</span>
+    <span class="block-title cardio">Cardio LISS</span>
+    <span class="block-time">30 min</span>
   </div>
-  <div class="wcontent" id="legs-w2">
-    <div class="day-header"><span class="day-badge legs">LEGS</span><span class="day-title-text">Piernas — Semana 2</span></div>
-    <div class="day-intro">Mismo orden. Progresión en ejercicios principales. Zancadas añadidas como finalizador.</div>
-    <div class="ex-list">
-      <div class="ex-item priority"><button class="ex-trigger" onclick="toggleEx(this)"><div class="ex-trigger-left"><span class="ex-name">Prensa de Piernas</span><span class="badge-prio">PRINCIPAL</span></div><span class="ex-sr-inline legs">5×12/10/8/6/6</span><svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="ex-detail"><div class="ex-detail-inner"><div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr legs">5 × 12/10/8/6/6</div></div><div class="detail-tips">Serie extra. +10 kg si S1 fue controlado.</div></div></div></div>
-      <div class="ex-item"><button class="ex-trigger" onclick="toggleEx(this)"><div class="ex-trigger-left"><span class="ex-name">Sentadilla Goblet</span></div><span class="ex-sr-inline legs">3×12</span><svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="ex-detail"><div class="ex-detail-inner"><div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr legs">3 × 12</div></div><div class="detail-tips">+4 kg en mancuerna. Añadir pausa de 2 seg abajo.</div></div></div></div>
-      <div class="ex-item"><button class="ex-trigger" onclick="toggleEx(this)"><div class="ex-trigger-left"><span class="ex-name">Extensión Cuádriceps</span></div><span class="ex-sr-inline legs">4×15</span><svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="ex-detail"><div class="ex-detail-inner"><div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr legs">4 × 15</div></div><div class="detail-tips">Serie extra. Reducir descanso a 60 seg.</div></div></div></div>
-      <div class="ex-item"><button class="ex-trigger" onclick="toggleEx(this)"><div class="ex-trigger-left"><span class="ex-name">Peso Muerto Rumano</span></div><span class="ex-sr-inline legs">4×10</span><svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="ex-detail"><div class="ex-detail-inner"><div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr legs">4 × 10</div></div><div class="detail-tips">+4 kg si S1 técnicamente limpio. Pausa 1 seg en posición de máximo estiramiento.</div></div></div></div>
-      <div class="ex-item"><button class="ex-trigger" onclick="toggleEx(this)"><div class="ex-trigger-left"><span class="ex-name">Curl Femoral</span></div><span class="ex-sr-inline legs">4×12</span><svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="ex-detail"><div class="ex-detail-inner"><div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr legs">4 × 12</div></div><div class="detail-tips">Serie extra. Excéntrico 4 seg esta semana.</div></div></div></div>
-      <div class="ex-item"><button class="ex-trigger" onclick="toggleEx(this)"><div class="ex-trigger-left"><span class="ex-name">Zancadas Caminando con Mancuernas</span><span class="ex-note">Nuevo en S2 · Finalizador</span></div><span class="ex-sr-inline legs">3×12 c/lado</span><svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="ex-detail"><div class="ex-detail-inner"><div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr legs">3 × 12 pasos cada lado</div></div><div class="detail-tips">Mancuernas ligeras al principio. Rodilla trasera casi toca el suelo. Torso erguido. Cuádriceps y glúteo. Finalizador — no necesitas mucha carga para sentirlo.</div></div></div></div>
-      <div class="ex-item"><button class="ex-trigger" onclick="toggleEx(this)"><div class="ex-trigger-left"><span class="ex-name">Gemelos + Core (igual S1)</span></div><span class="ex-sr-inline core">sin cambio</span><svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="ex-detail"><div class="ex-detail-inner"><div class="detail-tips">Igual que semana 1.</div></div></div></div>
+  <div class="day-intro">Bici o cinta con inclinación. FC 65–70% máx. Agarre relajado.</div>
+
+  <div class="block-header">
+    <span class="block-num">02</span>
+    <span class="block-title rehab">Rehab Fisio</span>
+    <span class="block-time">15 min</span>
+  </div>
+  <div class="day-intro">Isométricos + rotaciones. Ambos brazos.</div>
+
+  <div class="block-header">
+    <span class="block-num">03</span>
+    <span class="block-title main">Torso Superior</span>
+    <span class="block-time">40 min</span>
+  </div>
+
+  <div class="warn-box"><strong>Todos los ejercicios de tirón hoy:</strong> con correas de muñeca si las tienes. Las correas descargan casi por completo el flexor del antebrazo. Cuestan 10€ y son la mejor inversión para esta fase.</div>
+
+  <div class="ex-list">
+
+    <div class="ex-item">
+      <button class="ex-trigger" onclick="toggleEx(this)">
+        <div class="ex-trigger-left">
+          <span class="ex-name">Press Plano en Máquina</span>
+          <span class="badge-safe">CODO PROTEGIDO</span>
+          <span class="ex-note">Sin estabilización · Sin agarre exigente</span>
+        </div>
+        <span class="ex-sr upper">4×12</span>
+        <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="ex-detail"><div class="ex-detail-inner">
+        <div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr" style="color:var(--upper)">4 × 12</div></div>
+        <div class="detail-tips">Máquina en vez de mancuernas esta fase. Codos a 45°. Escápulas retraídas. Carga moderada. Las asas de la máquina se agarran sin apretar.</div>
+      </div></div>
     </div>
+
+    <div class="ex-item">
+      <button class="ex-trigger" onclick="toggleEx(this)">
+        <div class="ex-trigger-left">
+          <span class="ex-name">Remo en Máquina con Apoyo de Pecho</span>
+          <span class="badge-safe">CODO PROTEGIDO</span>
+          <span class="ex-note">Correas · Sin estabilización</span>
+        </div>
+        <span class="ex-sr upper">4×12</span>
+        <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="ex-detail"><div class="ex-detail-inner">
+        <div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr" style="color:var(--upper)">4 × 12</div></div>
+        <div class="detail-tips">Chest-supported row. Con correas para descargar antebrazo. Tirón a costillas, pausa 1 seg. Es la opción más segura para espalda con tu codo.</div>
+      </div></div>
+    </div>
+
+    <div class="ex-item">
+      <button class="ex-trigger" onclick="toggleEx(this)">
+        <div class="ex-trigger-left">
+          <span class="ex-name">Jalón Agarre Neutro</span>
+          <span class="badge-safe">CODO PROTEGIDO</span>
+          <span class="ex-note">Triángulo + correas</span>
+        </div>
+        <span class="ex-sr upper">3×12</span>
+        <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="ex-detail"><div class="ex-detail-inner">
+        <div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr" style="color:var(--upper)">3 × 12</div></div>
+        <div class="detail-tips">Triángulo. Correas si las tienes. Concéntrate en bajar codos, no en tirar con las manos — esa imagen mental reduce automáticamente la activación del antebrazo.</div>
+      </div></div>
+    </div>
+
+    <div class="ex-item">
+      <button class="ex-trigger" onclick="toggleEx(this)">
+        <div class="ex-trigger-left">
+          <span class="ex-name">Press Hombros en Máquina</span>
+          <span class="badge-safe">CODO PROTEGIDO</span>
+          <span class="ex-note">Sin estabilización del antebrazo</span>
+        </div>
+        <span class="ex-sr upper">3×12</span>
+        <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="ex-detail"><div class="ex-detail-inner">
+        <div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr" style="color:var(--upper)">3 × 12</div></div>
+        <div class="detail-tips">Máquina con respaldo. Codos ligeramente por delante del torso. No bloquear arriba.</div>
+      </div></div>
+    </div>
+
+    <div class="ex-item">
+      <button class="ex-trigger" onclick="toggleEx(this)">
+        <div class="ex-trigger-left">
+          <span class="ex-name">Face Pull en Polea</span>
+          <span class="badge-golf">FUNCIONAL GOLF</span>
+          <span class="ex-note">Salud escapular · Rotadores externos</span>
+        </div>
+        <span class="ex-sr upper">4×15</span>
+        <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="ex-detail"><div class="ex-detail-inner">
+        <div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr" style="color:var(--upper)">4 × 15</div></div>
+        <div class="detail-tips">Cuerda en polea alta. Tirón hasta la cara separando manos. Deltoides posterior y rotadores externos — críticos para follow-through del swing. Volumen alto, peso ligero.</div>
+      </div></div>
+    </div>
+
+    <div class="ex-item">
+      <button class="ex-trigger" onclick="toggleEx(this)">
+        <div class="ex-trigger-left">
+          <span class="ex-name">Extensión Tríceps Polea (cuerda)</span>
+          <span class="badge-safe">CODO PROTEGIDO</span>
+          <span class="ex-note">Tríceps · Agarre relajado</span>
+        </div>
+        <span class="ex-sr upper">3×12</span>
+        <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="ex-detail"><div class="ex-detail-inner">
+        <div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr" style="color:var(--upper)">3 × 12</div></div>
+        <div class="detail-tips">Cuerda para agarre completamente relajado. Codos pegados al cuerpo. Separar al final.</div>
+      </div></div>
+    </div>
+
   </div>
 </div>
 
-<!-- PUSH B -->
-<div class="section" id="push2">
-  <div class="sec-tag push">Jueves · Sesión 4 de 5</div>
-  <div class="sec-title">Push B — Hombros Prioritario</div>
-  <p class="sec-desc">Deltoides como protagonista. Lateral define la amplitud del tren superior. Posterior corrige la anteroversión escapular del trabajo sedentario.</p>
-  <div class="wtabs">
-    <button class="wtab active" onclick="showWeek('push2',1)">Semana 1</button>
-    <button class="wtab" onclick="showWeek('push2',2)">Semana 2</button>
+<!-- DÍA 4 -->
+<div class="section" id="d4">
+  <div class="sec-tag mobil">Viernes · Día 4 de 4</div>
+  <div class="sec-title">Movilidad + Velocidad de Palo</div>
+  <p class="sec-desc">Sesión específica de preparación para el fin de semana de golf. Movilidad torácica y de cadera para liberar el swing, más el protocolo de velocidad de palo (overload/underload) que ha mostrado 3–7 mph de mejora en 4–6 semanas.</p>
+
+  <div class="day-header">
+    <span class="day-badge cardio">CARDIO</span>
+    <span class="day-badge rehab">REHAB</span>
+    <span class="day-badge mobil">MOVILIDAD</span>
+    <span class="day-title-text">75–90 min total</span>
   </div>
-  <div class="wcontent active" id="push2-w1">
-    <div class="day-header"><span class="day-badge push">PUSH B</span><span class="day-title-text">Hombros + Pecho Apoyo + Tríceps</span></div>
-    <div class="day-intro">Calentamiento: rotaciones externas con banda, 2×15. El deltoides posterior es el más importante para equilibrar la postura de quien trabaja sentado.</div>
-    <div class="ex-list">
-      <div class="ex-item priority"><button class="ex-trigger" onclick="toggleEx(this)"><div class="ex-trigger-left"><span class="ex-name">Press de Hombros Mancuernas</span><span class="badge-prio">PRINCIPAL</span></div><span class="ex-sr-inline push">4×10/8/8/6</span><svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="ex-detail"><div class="ex-detail-inner"><div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr push">4 × 10/8/8/6</div></div><div class="detail-tips">Sentado con respaldo 90°. Codos ligeramente por delante del plano del torso. No bloquear codos arriba. Pirámide ascendente. Escápulas estables durante todo el movimiento.</div></div></div></div>
-      <div class="ex-item"><button class="ex-trigger" onclick="toggleEx(this)"><div class="ex-trigger-left"><span class="ex-name">Elevaciones Laterales con Mancuernas</span><span class="ex-note">Peso muy controlado</span></div><span class="ex-sr-inline push">4×15</span><svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="ex-detail"><div class="ex-detail-inner"><div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr push">4 × 15</div></div><div class="detail-tips">Codo ligeramente flexionado y fijo. Hasta justo el paralelo — no más. Meñique ligeramente más alto que el pulgar al llegar arriba. Sin impulso del torso. El deltoides lateral es pequeño — no necesita mucho peso para fatigarse.</div></div></div></div>
-      <div class="ex-item"><button class="ex-trigger" onclick="toggleEx(this)"><div class="ex-trigger-left"><span class="ex-name">Face Pull en Polea (cuerda alta)</span><span class="ex-note">Deltoides posterior · Manguito rotador</span></div><span class="ex-sr-inline push">4×15</span><svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="ex-detail"><div class="ex-detail-inner"><div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr push">4 × 15</div></div><div class="detail-tips">Polea a altura de ojos o superior. Tirón hasta la cara separando las manos al final. Codos a altura de hombros o por encima. Fundamental para el equilibrio postural. Peso ligero — la función es articular, no de potencia.</div></div></div></div>
-      <div class="ex-item"><button class="ex-trigger" onclick="toggleEx(this)"><div class="ex-trigger-left"><span class="ex-name">Pájaros / Elevaciones Posteriores Inclinado</span><span class="ex-note">Deltoides posterior · Postura</span></div><span class="ex-sr-inline push">3×15</span><svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="ex-detail"><div class="ex-detail-inner"><div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr push">3 × 15</div></div><div class="detail-tips">Torso inclinado 45°, espalda neutra. Codos con flexión ligera y fija. Mancuernas hacia atrás y arriba. El deltoides posterior es el músculo más ignorado del tren superior y el que más diferencia hace en la postura y en la estética de la espalda.</div></div></div></div>
-      <div class="ex-item"><button class="ex-trigger" onclick="toggleEx(this)"><div class="ex-trigger-left"><span class="ex-name">Press Inclinado Mancuernas — Apoyo</span></div><span class="ex-sr-inline push">3×10</span><svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="ex-detail"><div class="ex-detail-inner"><div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr push">3 × 10</div></div><div class="detail-tips">Pecho como apoyo esta sesión. Carga inferior al Push A. El objetivo es acumular volumen semanal de pecho, no maximizar carga. Técnica perfecta sobre carga máxima.</div></div></div></div>
-      <div class="ex-item"><button class="ex-trigger" onclick="toggleEx(this)"><div class="ex-trigger-left"><span class="ex-name">Extensión Tríceps sobre la Cabeza</span><span class="ex-note">Cabeza larga · Máximo estiramiento</span></div><span class="ex-sr-inline push">3×12</span><svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="ex-detail"><div class="ex-detail-inner"><div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr push">3 × 12</div></div><div class="detail-tips">Mancuerna con dos manos detrás de la cabeza. Codos apuntando al techo. Trabaja la cabeza larga en posición de máximo estiramiento — la más efectiva para hipertrofia del tríceps.</div></div></div></div>
-    </div>
-    <div class="s2-diff"><strong>S2:</strong> Superserie laterales + face pull (4 rondas sin descanso). +2 kg en press hombros. Serie extra en pájaros.</div>
+
+  <div class="block-header">
+    <span class="block-num">01</span>
+    <span class="block-title cardio">Cardio LISS</span>
+    <span class="block-time">30 min</span>
   </div>
-  <div class="wcontent" id="push2-w2">
-    <div class="day-header"><span class="day-badge push">PUSH B</span><span class="day-title-text">Hombros — Semana 2</span></div>
-    <div class="day-intro">Superserie laterales + face pull. Progresión en press de hombros.</div>
-    <div class="ex-list">
-      <div class="ex-item priority"><button class="ex-trigger" onclick="toggleEx(this)"><div class="ex-trigger-left"><span class="ex-name">Press Hombros Mancuernas</span><span class="badge-prio">PRINCIPAL</span></div><span class="ex-sr-inline push">5×10/8/8/6/6</span><svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="ex-detail"><div class="ex-detail-inner"><div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr push">5 × 10/8/8/6/6</div></div><div class="detail-tips">Serie extra. +2 kg si S1 cómodo.</div></div></div></div>
-      <div class="ex-item"><button class="ex-trigger" onclick="toggleEx(this)"><div class="ex-trigger-left"><span class="ex-name">Laterales + Face Pull (superserie)</span><span class="ex-note">Sin descanso entre ejercicios</span></div><span class="ex-sr-inline push">4 rondas</span><svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="ex-detail"><div class="ex-detail-inner"><div class="detail-row"><div class="detail-label">Protocolo</div><div class="detail-sr push">15 laterales + 15 face pull × 4</div></div><div class="detail-tips">90 seg entre rondas. Alta fatiga de deltoides lateral y posterior simultáneamente.</div></div></div></div>
-      <div class="ex-item"><button class="ex-trigger" onclick="toggleEx(this)"><div class="ex-trigger-left"><span class="ex-name">Pájaros Posteriores</span></div><span class="ex-sr-inline push">4×15</span><svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="ex-detail"><div class="ex-detail-inner"><div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr push">4 × 15</div></div><div class="detail-tips">Serie extra. +2 kg si S1 cómodo. Pausa 2 seg en contracción.</div></div></div></div>
-      <div class="ex-item"><button class="ex-trigger" onclick="toggleEx(this)"><div class="ex-trigger-left"><span class="ex-name">Press Inclinado Apoyo</span></div><span class="ex-sr-inline push">3×10</span><svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="ex-detail"><div class="ex-detail-inner"><div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr push">3 × 10</div></div><div class="detail-tips">Sin cambio. Carga estable.</div></div></div></div>
-      <div class="ex-item"><button class="ex-trigger" onclick="toggleEx(this)"><div class="ex-trigger-left"><span class="ex-name">Ext. Tríceps sobre la Cabeza</span></div><span class="ex-sr-inline push">3×12</span><svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="ex-detail"><div class="ex-detail-inner"><div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr push">3 × 12</div></div><div class="detail-tips">+2 kg si S1 cómodo.</div></div></div></div>
+  <div class="day-intro">Bici o cinta con inclinación. Suave — mañana toca golf. FC 60–65% máx (≈120–130 ppm). El cardio hoy es más de mantenimiento que de estímulo.</div>
+
+  <div class="block-header">
+    <span class="block-num">02</span>
+    <span class="block-title rehab">Rehab Fisio</span>
+    <span class="block-time">15 min</span>
+  </div>
+  <div class="day-intro">Isométricos + rotaciones. Ambos brazos.</div>
+
+  <div class="block-header">
+    <span class="block-num">03</span>
+    <span class="block-title main">Movilidad + Velocidad de Palo</span>
+    <span class="block-time">35–40 min</span>
+  </div>
+
+  <div class="ex-list">
+
+    <div class="ex-item">
+      <button class="ex-trigger" onclick="toggleEx(this)">
+        <div class="ex-trigger-left">
+          <span class="ex-name">Quadruped T-spine Rotation</span>
+          <span class="badge-golf">MOVILIDAD TORÁCICA</span>
+          <span class="ex-note">Bloqueo principal del backswing en sedentarios</span>
+        </div>
+        <span class="ex-sr mobil">2×10 c/lado</span>
+        <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="ex-detail"><div class="ex-detail-inner">
+        <div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr" style="color:var(--mobil)">2 × 10 cada lado</div></div>
+        <div class="detail-tips">A cuatro patas. Mano detrás de la nuca. Rotar codo hacia el techo siguiéndolo con la mirada. <strong>La columna torácica es la primera limitación del swing en personas sedentarias</strong>. Movimiento lento y completo.</div>
+      </div></div>
     </div>
+
+    <div class="ex-item">
+      <button class="ex-trigger" onclick="toggleEx(this)">
+        <div class="ex-trigger-left">
+          <span class="ex-name">Open Book</span>
+          <span class="badge-golf">MOVILIDAD TORÁCICA</span>
+          <span class="ex-note">Tumbado de lado</span>
+        </div>
+        <span class="ex-sr mobil">2×10 c/lado</span>
+        <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="ex-detail"><div class="ex-detail-inner">
+        <div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr" style="color:var(--mobil)">2 × 10 cada lado</div></div>
+        <div class="detail-tips">Tumbado de lado, rodillas dobladas 90°. Brazos al frente uno sobre otro. Abrir el brazo de arriba en arco hasta tocar el suelo del otro lado. Rodillas juntas — rotación solo del torso.</div>
+      </div></div>
+    </div>
+
+    <div class="ex-item">
+      <button class="ex-trigger" onclick="toggleEx(this)">
+        <div class="ex-trigger-left">
+          <span class="ex-name">90/90 Cadera con Cambio</span>
+          <span class="badge-golf">MOVILIDAD CADERA</span>
+          <span class="ex-note">Rotación interna y externa</span>
+        </div>
+        <span class="ex-sr mobil">2×8 cambios</span>
+        <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="ex-detail"><div class="ex-detail-inner">
+        <div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr" style="color:var(--mobil)">2 × 8 cambios totales</div></div>
+        <div class="detail-tips">Sentado. Ambas piernas 90°, una delante otra al lado. Cambiar de lado sin usar manos. La cadera trasera necesita rotación interna durante el backswing — este ejercicio la libera.</div>
+      </div></div>
+    </div>
+
+    <div class="ex-item">
+      <button class="ex-trigger" onclick="toggleEx(this)">
+        <div class="ex-trigger-left">
+          <span class="ex-name">Estiramiento Flexor de Cadera</span>
+          <span class="ex-note">Couch stretch · Postura</span>
+        </div>
+        <span class="ex-sr mobil">2×30s c/lado</span>
+        <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="ex-detail"><div class="ex-detail-inner">
+        <div class="detail-row"><div class="detail-label">Duración</div><div class="detail-sr" style="color:var(--mobil)">2 × 30 segundos cada lado</div></div>
+        <div class="detail-tips">Zancada profunda con rodilla trasera en el suelo. Empujar cadera hacia delante hasta sentir tirón en psoas. Los flexores tensos por estar sentado limitan la extensión durante follow-through.</div>
+      </div></div>
+    </div>
+
+    <div class="ex-item">
+      <button class="ex-trigger" onclick="toggleEx(this)">
+        <div class="ex-trigger-left">
+          <span class="ex-name">Estiramiento Pectoral en Esquina</span>
+          <span class="ex-note">Abrir hombros</span>
+        </div>
+        <span class="ex-sr mobil">2×30s</span>
+        <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="ex-detail"><div class="ex-detail-inner">
+        <div class="detail-row"><div class="detail-label">Duración</div><div class="detail-sr" style="color:var(--mobil)">2 × 30 segundos</div></div>
+        <div class="detail-tips">Antebrazos en marco de puerta, paso adelante. El pecho abre, hombros van atrás.</div>
+      </div></div>
+    </div>
+
+    <div class="ex-item priority">
+      <button class="ex-trigger" onclick="toggleEx(this)">
+        <div class="ex-trigger-left">
+          <span class="ex-name">Protocolo Overload/Underload (Swings)</span>
+          <span class="badge-prio">VELOCIDAD DE PALO</span>
+          <span class="ex-note">3–7 mph de mejora en 4–6 semanas</span>
+        </div>
+        <span class="ex-sr mobil">3 rondas</span>
+        <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="ex-detail"><div class="ex-detail-inner">
+        <div class="detail-row"><div class="detail-label">Protocolo</div><div class="detail-sr" style="color:var(--mobil)">3 rondas: 10 lastrado + 10 normal máxima velocidad</div></div>
+        <div class="detail-label">Técnica y Tips</div>
+        <div class="detail-tips">Palo viejo con peso añadido + palo normal. <strong>10 swings con palo lastrado al 80% de velocidad</strong>, descanso 30 seg, <strong>10 swings con tu palo normal a máxima velocidad absoluta</strong>. 3 rondas. Grip suave — no apretar (protege el codo). Evidencia clínica de mejora significativa en velocidad de palo con este protocolo.</div>
+      </div></div>
+    </div>
+
+    <div class="ex-item">
+      <button class="ex-trigger" onclick="toggleEx(this)">
+        <div class="ex-trigger-left">
+          <span class="ex-name">Pallof Press (refuerzo semanal)</span>
+          <span class="ex-note">Repaso antes del fin de semana</span>
+        </div>
+        <span class="ex-sr mobil">3×10 c/lado</span>
+        <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="ex-detail"><div class="ex-detail-inner">
+        <div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr" style="color:var(--mobil)">3 × 10 cada lado</div></div>
+        <div class="detail-tips">Versión más ligera que la del lunes. Repaso del patrón antirrotacional antes del fin de semana de golf.</div>
+      </div></div>
+    </div>
+
   </div>
 </div>
 
-<!-- PULL B -->
-<div class="section" id="pull2">
-  <div class="sec-tag pull">Viernes · Sesión 5 de 5</div>
-  <div class="sec-title">Pull B — Anchura de Espalda</div>
-  <p class="sec-desc">Eje vertical: jalones y dominadas. Construyen la anchura del dorsal y redondo mayor. Complementa al Pull A que trabaja el grosor.</p>
-  <div class="wtabs">
-    <button class="wtab active" onclick="showWeek('pull2',1)">Semana 1</button>
-    <button class="wtab" onclick="showWeek('pull2',2)">Semana 2</button>
-  </div>
-  <div class="wcontent active" id="pull2-w1">
-    <div class="day-header"><span class="day-badge pull">PULL B</span><span class="day-title-text">Espalda Anchura + Bíceps + Lumbar</span></div>
-    <div class="day-intro">Sesión de cierre semanal. El cuerpo lleva 4 días acumulados. La carga debe ser honesta, no heroica. Si la fuerza ha bajado respecto al lunes es normal.</div>
-    <div class="ex-list">
-      <div class="ex-item priority"><button class="ex-trigger" onclick="toggleEx(this)"><div class="ex-trigger-left"><span class="ex-name">Jalón al Pecho — Agarre Prono</span><span class="badge-prio">PRINCIPAL</span></div><span class="ex-sr-inline pull">4×12/10/8/6</span><svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="ex-detail"><div class="ex-detail-inner"><div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr pull">4 × 12/10/8/6</div></div><div class="detail-tips">Agarre ligeramente más ancho que hombros. Inclinar torso 15° hacia atrás. Llevar barra a clavícula — no al pecho. Escápulas bajan antes de que los codos doblen. Sin balanceo. Pirámide ascendente.</div></div></div></div>
-      <div class="ex-item"><button class="ex-trigger" onclick="toggleEx(this)"><div class="ex-trigger-left"><span class="ex-name">Jalón — Agarre Supino (palmas hacia ti)</span><span class="ex-note">Dorsal inferior + bíceps</span></div><span class="ex-sr-inline pull">3×10</span><svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="ex-detail"><div class="ex-detail-inner"><div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr pull">3 × 10</div></div><div class="detail-tips">Agarre algo más cerrado que el prono. El supino activa más el dorsal inferior y el bíceps. Tirón a la parte alta del pecho. Complementa al jalón prono activando ángulos distintos.</div></div></div></div>
-      <div class="ex-item"><button class="ex-trigger" onclick="toggleEx(this)"><div class="ex-trigger-left"><span class="ex-name">Jalón — Agarre Neutro (triángulo)</span><span class="ex-note">Mayor recorrido · Dorsal completo</span></div><span class="ex-sr-inline pull">3×12</span><svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="ex-detail"><div class="ex-detail-inner"><div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr pull">3 × 12</div></div><div class="detail-tips">El agarre neutro permite mayor recorrido. Tirón profundo a la parte alta del abdomen. Carga inferior a los jalones anteriores.</div></div></div></div>
-      <div class="ex-item"><button class="ex-trigger" onclick="toggleEx(this)"><div class="ex-trigger-left"><span class="ex-name">Dominadas</span><span class="ex-note">Mayor activación de dorsal por ejercicio</span></div><span class="ex-sr-inline pull">3×máx</span><svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="ex-detail"><div class="ex-detail-inner"><div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr pull">3 × máximo (mínimo 6)</div></div><div class="detail-tips">Si haces más de 10 con buena técnica: añade lastre con cinturón. Si menos de 6: máquina asistida. Si el bíceps o antebrazo molesta esta semana: saltar y añadir en S2.</div></div></div></div>
-      <div class="ex-item"><button class="ex-trigger" onclick="toggleEx(this)"><div class="ex-trigger-left"><span class="ex-name">Curl Banco Inclinado con Mancuerna</span><span class="ex-note">Máximo estiramiento del bíceps</span></div><span class="ex-sr-inline pull">3×12</span><svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="ex-detail"><div class="ex-detail-inner"><div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr pull">3 × 12</div></div><div class="detail-tips">Banco a 45–60°. El ángulo pone el bíceps en posición de máximo estiramiento al inicio. Muy efectivo incluso con poco peso. Agarre neutro si hay molestia en antebrazo.</div></div></div></div>
-      <div class="ex-item"><button class="ex-trigger" onclick="toggleEx(this)"><div class="ex-trigger-left"><span class="ex-name">Hiperextensiones con Disco</span><span class="ex-note">Lumbar · Cierre de sesión</span></div><span class="ex-sr-inline core">3×15</span><svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="ex-detail"><div class="ex-detail-inner"><div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr core">3 × 15</div></div><div class="detail-tips">Disco 5–10 kg. Sube hasta la línea del cuerpo. Compensar el trabajo de jalones que carga la columna en flexión con extensión controlada.</div></div></div></div>
-    </div>
-    <div class="s2-diff"><strong>S2:</strong> +5 kg en jalón prono (serie extra). +5 kg jalón supino. Dominadas: si S1 >10 reps añadir 5 kg lastre. Superserie curl inclinado + curl martillo.</div>
-  </div>
-  <div class="wcontent" id="pull2-w2">
-    <div class="day-header"><span class="day-badge pull">PULL B</span><span class="day-title-text">Espalda Anchura — Semana 2</span></div>
-    <div class="day-intro">Progresión en jalones. Superserie de bíceps si el antebrazo no molesta.</div>
-    <div class="ex-list">
-      <div class="ex-item priority"><button class="ex-trigger" onclick="toggleEx(this)"><div class="ex-trigger-left"><span class="ex-name">Jalón Prono</span><span class="badge-prio">PRINCIPAL</span></div><span class="ex-sr-inline pull">5×12/10/8/6/6</span><svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="ex-detail"><div class="ex-detail-inner"><div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr pull">5 × 12/10/8/6/6</div></div><div class="detail-tips">Serie extra. +5 kg si S1 controlado en las últimas series.</div></div></div></div>
-      <div class="ex-item"><button class="ex-trigger" onclick="toggleEx(this)"><div class="ex-trigger-left"><span class="ex-name">Jalón Supino</span></div><span class="ex-sr-inline pull">4×10</span><svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="ex-detail"><div class="ex-detail-inner"><div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr pull">4 × 10</div></div><div class="detail-tips">Serie extra. +5 kg.</div></div></div></div>
-      <div class="ex-item"><button class="ex-trigger" onclick="toggleEx(this)"><div class="ex-trigger-left"><span class="ex-name">Jalón Agarre Neutro</span></div><span class="ex-sr-inline pull">3×12</span><svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="ex-detail"><div class="ex-detail-inner"><div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr pull">3 × 12</div></div><div class="detail-tips">+5 kg si S1 cómodo.</div></div></div></div>
-      <div class="ex-item"><button class="ex-trigger" onclick="toggleEx(this)"><div class="ex-trigger-left"><span class="ex-name">Dominadas</span></div><span class="ex-sr-inline pull">3×máx</span><svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="ex-detail"><div class="ex-detail-inner"><div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr pull">3 × máximo</div></div><div class="detail-tips">Si S1 >10 reps: +5 kg lastre. Si S1 6–10: intentar 1 rep más por serie.</div></div></div></div>
-      <div class="ex-item"><button class="ex-trigger" onclick="toggleEx(this)"><div class="ex-trigger-left"><span class="ex-name">Curl Inclinado + Curl Martillo (superserie)</span><span class="ex-note">Solo si no hay molestia en antebrazo</span></div><span class="ex-sr-inline pull">3 rondas</span><svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="ex-detail"><div class="ex-detail-inner"><div class="detail-row"><div class="detail-label">Protocolo</div><div class="detail-sr pull">10 + 12 × 3</div></div><div class="detail-tips">Sin descanso entre los dos curls. 90 seg entre rondas.</div></div></div></div>
-      <div class="ex-item"><button class="ex-trigger" onclick="toggleEx(this)"><div class="ex-trigger-left"><span class="ex-name">Hiperextensiones</span></div><span class="ex-sr-inline core">3×15</span><svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="ex-detail"><div class="ex-detail-inner"><div class="detail-row"><div class="detail-label">Series × Repeticiones</div><div class="detail-sr core">3 × 15</div></div><div class="detail-tips">+2.5 kg en disco si S1 fue fácil.</div></div></div></div>
-    </div>
-  </div>
-</div>
+<!-- DÍAS GOLF -->
+<div class="section" id="golfdays">
+  <div class="sec-tag info">Días de Golf</div>
+  <div class="sec-title">Estrategia para el Fin de Semana</div>
+  <p class="sec-desc">Tus 2 días de golf van habitualmente al fin de semana. La rehab del fisio se hace igual — golf no exime del protocolo diario.</p>
 
-<!-- NUTRITION -->
-<div class="section" id="nutrition">
-  <div class="sec-tag info">Nutrición Ajustada</div>
-  <div class="sec-title">Superávit Leve — Hipertrofia</div>
-  <p class="sec-desc">Pasas de déficit a superávit mínimo. El objetivo es máxima síntesis proteica con mínimo acúmulo de grasa adicional.</p>
-  <div class="nutr-grid">
-    <div class="ov-card"><div class="ov-label">Calorías diana</div><div class="ov-val">2550–2650</div><div class="ov-sub">kcal/día · +200–300 sobre mantenimiento</div></div>
-    <div class="ov-card"><div class="ov-label">Proteína</div><div class="ov-val">190–210g</div><div class="ov-sub">2.2–2.4g/kg · Factor limitante real</div></div>
-    <div class="ov-card"><div class="ov-label">Hidratos</div><div class="ov-val">200–240g</div><div class="ov-sub">Glucógeno lleno = mejor rendimiento</div></div>
-    <div class="ov-card"><div class="ov-label">Grasas</div><div class="ov-val">65–75g</div><div class="ov-sub">No bajar de 0.8g/kg — impacta testosterona</div></div>
+  <div class="alert-box"><strong>Regla:</strong> Rehab siempre. Antes de jugar: calor local + calentamiento específico. Después de jugar: stretching del flexor + posible calor si molesta. La epicondilitis es sensible a los primeros swings del día cuando el tejido está frío.</div>
+
+  <div class="ex-list">
+
+    <div class="ex-item">
+      <button class="ex-trigger" onclick="toggleEx(this)">
+        <div class="ex-trigger-left">
+          <span class="ex-name">Rutina Pre-Golf (15 min en casa o vestuario)</span>
+          <span class="badge-golf">ANTES DE JUGAR</span>
+          <span class="ex-note">Rehab + movilidad + calentamiento</span>
+        </div>
+        <span class="ex-sr rot">15 min</span>
+        <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="ex-detail"><div class="ex-detail-inner">
+        <div class="detail-label">Protocolo</div>
+        <div class="detail-tips">1. Calor local en antebrazo 10 min · 2. Rehab del fisio completa (isométricos + rotaciones) · 3. Movilidad: 90/90 cadera 6 cambios + Open Book 8/lado + Quadruped T-spine 8/lado + Couch stretch 30 seg/lado · 4. Swings sin palo a velocidad creciente 10 reps · 5. En el driving range: 20 golpes progresivos desde wedge hasta driver. <strong>Empezar el primer hoyo con el cuerpo caliente hace la diferencia entre buen primer hoyo o necesitar 3 hoyos para encontrar el swing</strong>. Con tu codo lesionado es aún más importante.</div>
+      </div></div>
+    </div>
+
+    <div class="ex-item">
+      <button class="ex-trigger" onclick="toggleEx(this)">
+        <div class="ex-trigger-left">
+          <span class="ex-name">Durante la Vuelta</span>
+          <span class="ex-note">Gestión del codo mientras juegas</span>
+        </div>
+        <span class="ex-sr rot">18 hoyos</span>
+        <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="ex-detail"><div class="ex-detail-inner">
+        <div class="detail-label">Puntos clave</div>
+        <div class="detail-tips">Grip suave (presión de tubo de pasta de dientes). Si un tipo de golpe agrava el codo (probablemente golpes de bunker con muñeca activa), sáltalo o pídele a un compañero — mejor no jugar un golpe que reagudizar la lesión. Si el codo empieza a doler notable durante la vuelta, aplicar frío en el descanso del hoyo 9 y reducir la potencia el resto de la vuelta. <strong>Terminar una vuelta forzando el codo con dolor puede retrasar 2 semanas la recuperación</strong>.</div>
+      </div></div>
+    </div>
+
+    <div class="ex-item">
+      <button class="ex-trigger" onclick="toggleEx(this)">
+        <div class="ex-trigger-left">
+          <span class="ex-name">Post-Golf</span>
+          <span class="ex-note">Recuperación tras la vuelta</span>
+        </div>
+        <span class="ex-sr rot">10 min</span>
+        <svg class="ex-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="ex-detail"><div class="ex-detail-inner">
+        <div class="detail-label">Protocolo</div>
+        <div class="detail-tips">Stretching del flexor 3×30 seg cada brazo. Si el codo ha estado bien: calor 10 min esa noche. Si el codo ha molestado durante la vuelta: hielo 10 min al terminar (agudiza inflamación) y calor esa noche antes de dormir. Rehab del fisio: hazla igualmente en casa si no la hiciste antes de jugar.</div>
+      </div></div>
+    </div>
+
   </div>
-  <div class="gold-box"><strong>Cambio clave:</strong> Aumentar ración de hidrato complejo en la comida principal (+30–40g arroz/patata en seco vs el plan de déficit). No subir calorías a través de grasas o alcohol.</div>
-  <div class="alert-box"><strong>Fin de semana:</strong> Hasta 3000–3200 kcal no daña el proceso si la proteína se mantiene alta. El alcohol sigue inhibiendo la síntesis proteica directamente durante su metabolización.</div>
-  <div class="info-box"><strong>Batido post-entreno:</strong> Sigue siendo la herramienta más práctica para el pico proteico del día. La ventana anabólica de 30 min está sobrevalorada, pero el batido es conveniente. Creatina diaria sin excepción.</div>
 </div>
 
 <script>
@@ -865,13 +945,6 @@ function showSection(id) {
     if(b.getAttribute('onclick') && b.getAttribute('onclick').includes("'"+id+"'")) b.classList.add('active');
   });
   window.scrollTo({top:0,behavior:'smooth'});
-}
-function showWeek(sec,week) {
-  const s = document.getElementById(sec);
-  s.querySelectorAll('.wcontent').forEach(w => w.classList.remove('active'));
-  s.querySelectorAll('.wtab').forEach(t => t.classList.remove('active'));
-  s.querySelector('#'+sec+'-w'+week).classList.add('active');
-  s.querySelectorAll('.wtab')[week-1].classList.add('active');
 }
 function toggleEx(btn) {
   const item = btn.closest('.ex-item');
